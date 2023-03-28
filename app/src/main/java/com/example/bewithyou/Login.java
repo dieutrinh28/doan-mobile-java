@@ -57,7 +57,6 @@ public class Login extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                System.out.println("cong a con");
                 startActivity(new Intent(Login.this , MainActivity.class));
                 finish();
             }

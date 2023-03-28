@@ -1,25 +1,38 @@
 package com.example.bewithyou;
 
 public class Product {
-    private String productName;
-    private double price;
+    private String name;
+    private String price;
     private String color;
     private String description;
     private String link;
 
-    public String getProductName() {
-        return productName;
+
+    public Product() {
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public Product(String productName, String price, String color, String description, String link) {
+        this.name = productName;
+        this.price = price;
+        this.color = color;
+        this.description = description;
+        this.link = link;
     }
 
-    public double getPrice() {
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
@@ -45,5 +58,16 @@ public class Product {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", price='" + price + '\'' +
+                ", color='" + color + '\'' +
+                ", description='" + description + '\'' +
+                ", link='" + link + '\'' +
+                '}';
     }
 }
