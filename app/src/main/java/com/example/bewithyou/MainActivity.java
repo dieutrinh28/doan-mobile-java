@@ -14,10 +14,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import android.util.Log;
 
 
@@ -37,33 +39,72 @@ public class MainActivity extends AppCompatActivity {
 
         btnAdd = findViewById(R.id.btnAdd);
         listview = findViewById(R.id.listview);
-
+        txtData = findViewById(R.id.txtText);
+//
+//        ArrayList<Product> list = new ArrayList<>();
+//        ArrayList<Product>  products = getProductsInStore("Orchid Oasis");
+//
+//        ArrayAdapter adapter = new ArrayAdapter<Product>(this, R.layout.listview, products);
+//        listview.setAdapter(adapter);
+        txtData.setText("helo");
         ArrayList<Product> list = new ArrayList<>();
-        ArrayList<Product>  products = getProductsInStore("Orchid Oasis");
-
-        ArrayAdapter adapter = new ArrayAdapter<Product>(this, R.layout.listview, products);
-        listview.setAdapter(adapter);
-
-        getProducts("Scented Treasures",new Callback<List<Product>>() {
+        searchProduct("chili","Orchid Oasis", new Callback<List<Product>>() {
             @Override
             public void onSuccess(List<Product> productList) {
-                for (Product product:
-                     productList) {
-                    System.out.println(product.toString()+"hehe\n");
+                if (productList.isEmpty()) {
+                    // Handle case where no products are found
+                    System.out.println("No products found.");
+                } else {
+                    // Do something with the found products
+                    System.out.println("Found " + productList.size() + " products.");
+
                 }
             }
 
             @Override
             public void onError(String errorMessage) {
                 // Handle errors here
+                System.out.println("Error: " + errorMessage);
             }
         });
 
 
+
     }
 
-    public ArrayList<Product> getProductsInStore(String storeName)
-    {
+    public void searchProduct(String productName,String storeName, Callback<List<Product>> callback) {
+        DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference(storeName);
+
+        productsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<Product> productList = new ArrayList<>();
+
+                for (DataSnapshot productSnapshot : snapshot.getChildren()) {
+                    Product product = productSnapshot.getValue(Product.class);
+
+                    if (product != null && product.getName().contains(productName)) {
+                        productList.add(product);
+                    }
+                }
+
+                if (productList.size() > 0) {
+                    callback.onSuccess(productList);
+                } else {
+                    callback.onError("No products found");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                callback.onError(error.getMessage());
+            }
+        });
+    }
+
+
+
+    public ArrayList<Product> getProductsInStore(String storeName) {
         ArrayList<Product> list = new ArrayList<>();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(storeName);
         reference.addValueEventListener(new ValueEventListener() {
@@ -75,14 +116,16 @@ public class MainActivity extends AppCompatActivity {
                     list.add(product);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
         return list;
     }
-    public void getProducts(String storeName,Callback<List<Product>> callback) {
-         final String TAG = "MyClass";
+
+    public void getProducts(String storeName, Callback<List<Product>> callback) {
+        final String TAG = "MyClass";
         Log.d(TAG, "Getting products from database");
         DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference(storeName);
         productsRef.addValueEventListener(new ValueEventListener() {
