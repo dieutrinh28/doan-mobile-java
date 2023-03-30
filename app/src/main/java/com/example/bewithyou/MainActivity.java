@@ -16,8 +16,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import android.util.Log;
@@ -48,31 +53,81 @@ public class MainActivity extends AppCompatActivity {
 //        listview.setAdapter(adapter);
         txtData.setText("helo");
         ArrayList<Product> list = new ArrayList<>();
-        searchProduct("chili","Orchid Oasis", new Callback<List<Product>>() {
+        updateProductRating("Orchid Oasis", "Chili", "2", new Callback<Boolean>() {
             @Override
-            public void onSuccess(List<Product> productList) {
-                if (productList.isEmpty()) {
-                    // Handle case where no products are found
-                    System.out.println("No products found.");
-                } else {
-                    // Do something with the found products
-                    System.out.println("Found " + productList.size() + " products.");
+            public void onSuccess(Boolean data) {
+                
+            }   
 
+            @Override
+            public void onError(String errorMessage) {
+
+            }
+        });
+        searchProduct("Chili", "Orchid Oasis", new Callback<List<Product>>() {
+            @Override
+            public void onSuccess(List<Product> data) {
+                for (Product pr :
+                        data) {
+                    System.out.println(pr.toString());
                 }
             }
 
             @Override
             public void onError(String errorMessage) {
-                // Handle errors here
-                System.out.println("Error: " + errorMessage);
+
             }
         });
-
-
-
+     
     }
 
-    public void searchProduct(String productName,String storeName, Callback<List<Product>> callback) {
+    public void updateProductPrice(String storeName, String productId, String newPrice, final Callback<Boolean> callback) {
+        DatabaseReference productRef = FirebaseDatabase.getInstance().getReference().child(storeName).child(productId).child("price");
+        productRef.setValue(newPrice).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    callback.onSuccess(true);
+                } else {
+                    callback.onError(task.getException().getMessage());
+                }
+            }
+        });
+    }
+    public void updateProductRating(String storeName, String productId, String newRating, final Callback<Boolean> callback) {
+        DatabaseReference productRef = FirebaseDatabase.getInstance().getReference().child(storeName).child(productId).child("rating");
+        productRef.setValue(newRating).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    callback.onSuccess(true);
+                } else {
+                    callback.onError(task.getException().getMessage());
+                }
+            }
+        });
+    }
+
+
+
+    public void updateProductProperty(String storeName ,String productId, String property, Object value, final Callback<Boolean> callback) {
+        DatabaseReference productRef = FirebaseDatabase.getInstance().getReference().child(storeName).child(productId);
+        Map<String, Object> updateMap = new HashMap<>();
+        updateMap.put(property, value);
+        productRef.updateChildren(updateMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    callback.onSuccess(true);
+                } else {
+                    callback.onError(task.getException().getMessage());
+                }
+            }
+        });
+    }
+
+
+    public static void searchProduct(String productName,String storeName, Callback<List<Product>> callback) {
         DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference(storeName);
 
         productsRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -83,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot productSnapshot : snapshot.getChildren()) {
                     Product product = productSnapshot.getValue(Product.class);
 
-                    if (product != null && product.getName().contains(productName)) {
+                    if (product != null && product.getName().toLowerCase().contains(productName.toLowerCase())) {
                         productList.add(product);
                     }
                 }
