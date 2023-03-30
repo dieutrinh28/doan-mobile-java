@@ -35,18 +35,15 @@ public class SearchPage extends AppCompatActivity implements SearchView.OnQueryT
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = editText.getText().toString();
-                MainActivity.searchProduct(name, "Orchid Oasis", new Callback<List<Product>>() {
+                getData.addToCart("lavander", "43", "2", "lavander", new Callback<String>() {
                     @Override
-                    public void onSuccess(List<Product> data) {
-                        for (Product pr :
-                                data) {
-                           textView.setText(pr.toString());
-                        }
+                    public void onSuccess(String data) {
+                        System.out.println(data.toString());
                     }
 
                     @Override
                     public void onError(String errorMessage) {
+                        System.out.println(errorMessage);
 
                     }
                 });
