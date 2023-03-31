@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.time.temporal.Temporal;
 import java.util.List;
@@ -32,23 +34,30 @@ public class SearchPage extends AppCompatActivity implements SearchView.OnQueryT
         editText = findViewById(R.id.search);
         button = findViewById(R.id.buttonSearch);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        RatingBar ratingBar = findViewById(R.id.ratingBar);
+
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
-            public void onClick(View view) {
-                getData.addToCart("lavander", "43", "2", "lavander", new Callback<String>() {
-                    @Override
-                    public void onSuccess(String data) {
-                        System.out.println(data.toString());
-                    }
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                // Handle the rating change here
+                int myRating = (int) rating;
 
-                    @Override
-                    public void onError(String errorMessage) {
-                        System.out.println(errorMessage);
+                        getData.updateProductRating("Orchid Oasis", "Chili", String.valueOf(myRating), new Callback<Boolean>() {
+                            @Override
+                            public void onSuccess(Boolean data) {
+                                Toast.makeText(SearchPage.this,myRating+" sao ne",Toast.LENGTH_SHORT).show();
+                            }
 
-                    }
-                });
+                            @Override
+                            public void onError(String errorMessage) {
+
+                            }
+                        });
+
+
             }
         });
+
     }
 
     @Override
