@@ -8,10 +8,15 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -114,7 +119,7 @@ public class CartAdapter extends BaseAdapter {
                     quantity++;
                     dataitem.tv_quantity.setText(String.valueOf(quantity));
                     cartItem.setQuantity( String.valueOf(quantity));
-                    updateCartItem(cartItem);
+                    updateCartItem(cartItem,String.valueOf(quantity));
                 }
             });
         }
@@ -129,7 +134,7 @@ public class CartAdapter extends BaseAdapter {
                         quantity--;
                         dataitem.tv_quantity.setText(String.valueOf(quantity));
                         cartItem.setQuantity(String.valueOf(quantity));
-                        updateCartItem(cartItem);
+                        updateCartItem(cartItem,String.valueOf(quantity));
                     }
                 }
             });
@@ -138,9 +143,28 @@ public class CartAdapter extends BaseAdapter {
 
         return convertView;
     }
-    private void updateCartItem(Cart cartItem) {
-        // TODO: Update the cart item in Firebase
+    private void updateCartItem(Cart cart, String newQuantity) {
+        DatabaseReference cartRef = FirebaseDatabase.getInstance().getReference("cart").child(cart.getProductName());
+
+        cart.setQuantity(newQuantity);
+
+        cartRef.setValue(cart)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Update the UI to reflect the new quantity
+                        notifyDataSetChanged();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Handle the error
+                        Toast.makeText(context, "Failed to update cart item", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
+
     private static class MyView{
         ImageView iv_photo;
         TextView tv_name;
