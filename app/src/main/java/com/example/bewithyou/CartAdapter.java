@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -85,6 +86,8 @@ public class CartAdapter extends BaseAdapter {
         if(convertView == null){
             dataitem = new MyView();
             convertView = inflater.inflate(R.layout.cartview, null);
+            dataitem.incrementButton = convertView.findViewById(R.id.btnAdd);
+            dataitem.decrementButton = convertView.findViewById(R.id.btnMinus);
             dataitem.iv_photo = convertView.findViewById(R.id.imageView_cart);
             dataitem.tv_name = convertView.findViewById(R.id.textView_productName);
             dataitem.tv_price=convertView.findViewById(R.id.textView_price);
@@ -101,14 +104,51 @@ public class CartAdapter extends BaseAdapter {
         dataitem.tv_name.setText(Cart_list.get(position).getProductName());
         dataitem.tv_price.setText(Cart_list.get(position).getPrice());
         dataitem.tv_quantity.setText(Cart_list.get(position).getQuantity());
+        final Cart cartItem = Cart_list.get(position);
+        if(dataitem.incrementButton != null)
+        {
+            dataitem.incrementButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int quantity = Integer.parseInt(dataitem.tv_quantity.getText().toString());
+                    quantity++;
+                    dataitem.tv_quantity.setText(String.valueOf(quantity));
+                    cartItem.setQuantity( String.valueOf(quantity));
+                    updateCartItem(cartItem);
+                }
+            });
+        }
+
+        if(dataitem.decrementButton != null)
+        {
+            dataitem.decrementButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int quantity = Integer.parseInt(dataitem.tv_quantity.getText().toString());
+                    if (quantity > 1) {
+                        quantity--;
+                        dataitem.tv_quantity.setText(String.valueOf(quantity));
+                        cartItem.setQuantity(String.valueOf(quantity));
+                        updateCartItem(cartItem);
+                    }
+                }
+            });
+        }
+
 
         return convertView;
+    }
+    private void updateCartItem(Cart cartItem) {
+        // TODO: Update the cart item in Firebase
     }
     private static class MyView{
         ImageView iv_photo;
         TextView tv_name;
         TextView tv_price;
         TextView tv_quantity;
+
+        Button incrementButton;
+        Button decrementButton;
 
     }
 }

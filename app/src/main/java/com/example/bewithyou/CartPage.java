@@ -5,7 +5,10 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -16,8 +19,10 @@ public class CartPage extends AppCompatActivity {
     private RecyclerView mRecyclerViewCart;
     private CartAdapter mCartAdapter;
     GridView gridView;
+    Button btnMinus, btnAdd;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,14 +32,13 @@ public class CartPage extends AppCompatActivity {
       //  List<Cart> photos = PhotoData.getPhotos();
 
         gridView = findViewById(R.id.gridview);
+        btnAdd = findViewById(R.id.btnAdd);
+        btnMinus = findViewById(R.id.btnMinus);
+
         getData.getCardData(new Callback<List<Cart>>() {
 
             @Override
             public void onSuccess(List<Cart> data) {
-                for (Cart cart :
-                        data) {
-                    System.out.println(cart.toString());
-                }
                 CartAdapter adapter = new CartAdapter(data,getApplicationContext());
                 gridView.setAdapter(adapter);
             }
@@ -44,6 +48,7 @@ public class CartPage extends AppCompatActivity {
 
             }
         });
+
 //        CartAdapter adapter = new CartAdapter(photos, getApplicationContext());
 
        // gridView.setOnItemClickListener(onitemclick);

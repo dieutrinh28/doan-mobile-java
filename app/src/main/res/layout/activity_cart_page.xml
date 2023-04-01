@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:numColumns="auto_fit"
+    android:numColumns="1"
     android:background="#D38080"
     tools:context=".CartPage">
 
