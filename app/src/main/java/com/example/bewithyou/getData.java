@@ -1,14 +1,12 @@
 package com.example.bewithyou;
 
+import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,6 +20,10 @@ import java.util.List;
 import java.util.Map;
 
 public class getData {
+    private static Context context;
+    public static void init(Context context) {
+        getData.context = context;
+    }
 
     public static void updateProductPrice(String storeName, String productId, String newPrice, final Callback<Boolean> callback) {
         DatabaseReference productRef = FirebaseDatabase.getInstance().getReference().child(storeName).child(productId).child("price");
@@ -138,9 +140,10 @@ public class getData {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for (DataSnapshot productSnapshot : snapshot.getChildren()) {
                                 Product product = productSnapshot.getValue(Product.class);
-
-                                if (product != null && product.getName().toLowerCase().contains(productName.toLowerCase())) {
-                                    productList.add(product);
+                                if (product != null && product.getName() != null && productName != null) {
+                                    if (product.getName().toLowerCase().contains(productName.toLowerCase())) {
+                                        productList.add(product);
+                                    }
                                 }
                             }
                         }
@@ -165,6 +168,7 @@ public class getData {
             }
         });
     }
+
 
     public static void getProductsInStore(String storeName, Callback<List<Product>> callback) {
         final String TAG = "Data";
@@ -211,7 +215,7 @@ public class getData {
         });
     }
 
-    public static void addToCart(String productName, String price, String quantity, String productId, Callback<String> callback) {
+    public static void addToCart(String productName, String price, String quantity,String imgLink, String productId, Callback<String> callback) {
         //String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference cartRef = FirebaseDatabase.getInstance().getReference("cart").child(productId);
 
@@ -225,7 +229,7 @@ public class getData {
                             .addOnFailureListener(e -> callback.onError(e.getMessage()));
                 } else {
                     // Product does not exist in cart, add it
-                    Card cartItem = new Card(productName, price, quantity);
+                    Cart cartItem = new Cart(productName, price, quantity,imgLink);
                     cartRef.setValue(cartItem)
                             .addOnSuccessListener(aVoid -> callback.onSuccess("Product added to cart"))
                             .addOnFailureListener(e -> callback.onError(e.getMessage()));
@@ -238,16 +242,16 @@ public class getData {
             }
         });
     }
-    public static void getCardData( Callback<List<Card>> callback) {
+    public static void getCardData( Callback<List<Cart>> callback) {
         final String TAG = "Data";
         Log.d(TAG, "Getting products from database");
-        DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference("card");
+        DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference("cart");
         productsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                List<Card> cardList = new ArrayList<>();
+                List<Cart> cardList = new ArrayList<>();
                 for (DataSnapshot productSnapshot : dataSnapshot.getChildren()) {
-                    Card card = productSnapshot.getValue(Card.class);
+                    Cart card = productSnapshot.getValue(Cart.class);
                     cardList.add(card);
                 }
                 callback.onSuccess(cardList);
