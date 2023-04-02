@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "148302997741",
+    "firebase_url": "https://little-chicks-default-rtdb.firebaseio.com",
+    "project_id": "little-chicks",
+    "storage_bucket": "little-chicks.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148302997741:android:1451db6e94600a84ca44e4",
+        "android_client_info": {
+          "package_name": "com.example.bewithyou"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148302997741-0i5lnupkldobrh6lvgu0r4u8vtj02kno.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfee56UiHMgGznSxeQuvdTL6Onni0st60"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148302997741-0i5lnupkldobrh6lvgu0r4u8vtj02kno.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148302997741:android:5bfb68f5fe6e68d2ca44e4",
+        "android_client_info": {
+          "package_name": "com.example.little_chicks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148302997741-0i5lnupkldobrh6lvgu0r4u8vtj02kno.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfee56UiHMgGznSxeQuvdTL6Onni0st60"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148302997741-0i5lnupkldobrh6lvgu0r4u8vtj02kno.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148302997741:android:f5ce2d3f7470c3fbca44e4",
+        "android_client_info": {
+          "package_name": "com.example.mobile_finalexam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148302997741-0i5lnupkldobrh6lvgu0r4u8vtj02kno.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfee56UiHMgGznSxeQuvdTL6Onni0st60"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148302997741-0i5lnupkldobrh6lvgu0r4u8vtj02kno.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
