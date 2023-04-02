@@ -33,6 +33,27 @@ public class SearchPage extends AppCompatActivity implements SearchView.OnQueryT
         textView =findViewById(R.id.result);
         editText = findViewById(R.id.search);
         button = findViewById(R.id.buttonSearch);
+        
+        button.setOnClickListener(new View.OnClickListener() {
+            String name = editText.getText().toString();
+            @Override
+            public void onClick(View view) {
+                getData.searchProductInStore(name,"Orchid Oasis", new Callback<List<Product>>() {
+                    @Override
+                    public void onSuccess(List<Product> data) {
+                        for (Product pr :
+                                data) {
+                            System.out.println(pr.toString());
+                        }
+                    }
+
+                    @Override
+                    public void onError(String errorMessage) {
+
+                    }
+                });
+            }
+        });
 
         RatingBar ratingBar = findViewById(R.id.ratingBar);
 

@@ -12,6 +12,9 @@
         android:theme="@style/Theme.BeWithYou"
         tools:targetApi="31">
         <activity
+            android:name=".CartPage"
+            android:exported="false" />
+        <activity
             android:name=".SearchPage"
             android:exported="false" />
         <activity
