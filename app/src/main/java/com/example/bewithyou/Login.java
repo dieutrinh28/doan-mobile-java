@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -57,7 +58,13 @@ public class Login extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Login.this , MainActivity.class));
+                SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                String em = email.replace("@gmail.com","");
+                editor.putString("username", em);
+                editor.apply();
+
+                startActivity(new Intent(Login.this , CartPage.class));
                 finish();
             }
         });
