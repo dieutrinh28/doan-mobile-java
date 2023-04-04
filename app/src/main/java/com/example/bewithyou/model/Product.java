@@ -1,4 +1,4 @@
-package com.example.bewithyou;
+package com.example.bewithyou.model;
 
 public class Product {
     private String productName;

@@ -7,7 +7,7 @@
     android:padding="12dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterPage">
+    tools:context=".ui.auth.RegisterPage">
 
     <ImageView
         android:layout_width="wrap_content"

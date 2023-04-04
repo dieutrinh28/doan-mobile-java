@@ -1,7 +1,6 @@
-package com.example.bewithyou;
+package com.example.bewithyou.ui.product;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.bewithyou.R;
+import com.example.bewithyou.model.Product;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

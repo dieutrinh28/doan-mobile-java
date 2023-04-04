@@ -1,4 +1,4 @@
-package com.example.bewithyou;
+package com.example.bewithyou.ui.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+
+import com.example.bewithyou.R;
+import com.example.bewithyou.ui.cart.CartPage;
 
 public class HomePage extends AppCompatActivity {
     private ImageButton imageButtonCart;

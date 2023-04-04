@@ -13,7 +13,8 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.time.temporal.Temporal;
+import com.example.bewithyou.model.Product;
+
 import java.util.List;
 
 public class SearchPage extends AppCompatActivity implements SearchView.OnQueryTextListener{

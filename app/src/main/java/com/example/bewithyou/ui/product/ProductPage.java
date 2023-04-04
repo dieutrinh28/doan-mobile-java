@@ -1,4 +1,4 @@
-package com.example.bewithyou;
+package com.example.bewithyou.ui.product;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,11 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.GridView;
+
+import com.example.bewithyou.Callback;
+import com.example.bewithyou.R;
+import com.example.bewithyou.getData;
+import com.example.bewithyou.model.Product;
 
 import java.util.List;
 

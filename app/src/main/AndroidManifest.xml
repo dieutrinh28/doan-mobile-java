@@ -12,25 +12,25 @@
         android:theme="@style/Theme.BeWithYou"
         tools:targetApi="31">
         <activity
-            android:name=".PaymentPage"
+            android:name=".ui.cart.PaymentPage"
             android:exported="false" />
         <activity
-            android:name=".ProductPage"
+            android:name=".ui.product.ProductPage"
             android:exported="false" />
         <activity
-            android:name=".CartPage"
+            android:name=".ui.cart.CartPage"
             android:exported="false" />
         <activity
             android:name=".SearchPage"
             android:exported="false" />
         <activity
-            android:name=".HomePage"
+            android:name=".ui.home.HomePage"
             android:exported="false" />
         <activity
-            android:name=".RegisterPage"
+            android:name=".ui.auth.RegisterPage"
             android:exported="false" />
         <activity
-            android:name=".LoginPage"
+            android:name=".ui.auth.LoginPage"
             android:exported="false" />
         <activity
             android:name=".SplashPage"

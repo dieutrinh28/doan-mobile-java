@@ -1,4 +1,4 @@
-package com.example.bewithyou;
+package com.example.bewithyou.ui.cart;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
@@ -9,6 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
+
+import com.example.bewithyou.Callback;
+import com.example.bewithyou.R;
+import com.example.bewithyou.getData;
+import com.example.bewithyou.model.Cart;
+
 import java.util.List;
 
 public class CartPage extends AppCompatActivity {

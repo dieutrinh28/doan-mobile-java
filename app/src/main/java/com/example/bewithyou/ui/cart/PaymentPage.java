@@ -1,10 +1,16 @@
-package com.example.bewithyou;
+package com.example.bewithyou.ui.cart;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.GridView;
 import android.widget.TextView;
+
+import com.example.bewithyou.Callback;
+import com.example.bewithyou.R;
+import com.example.bewithyou.getData;
+import com.example.bewithyou.model.Cart;
+import com.example.bewithyou.ui.cart.CartAdapter;
 
 import java.util.List;
 
