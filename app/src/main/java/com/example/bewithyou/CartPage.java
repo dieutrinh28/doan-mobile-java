@@ -38,7 +38,7 @@ public class CartPage extends AppCompatActivity {
         btnPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CartPage.this, PaymentActivity.class));
+                startActivity(new Intent(CartPage.this, PaymentPage.class));
                 finish();
             }
         });

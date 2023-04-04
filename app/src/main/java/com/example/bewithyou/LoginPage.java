@@ -17,7 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Login extends AppCompatActivity {
+public class LoginPage extends AppCompatActivity {
 
     private EditText email;
     private EditText password;
@@ -57,13 +57,13 @@ public class Login extends AppCompatActivity {
         Auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginPage.this, "Login Successful", Toast.LENGTH_SHORT).show();
                 SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 String em = email.replace("@gmail.com","");
                 editor.putString("username", em);
                 editor.apply();
-                startActivity(new Intent(Login.this , CartPage.class));
+                startActivity(new Intent(LoginPage.this , CartPage.class));
                 finish();
             }
         });
