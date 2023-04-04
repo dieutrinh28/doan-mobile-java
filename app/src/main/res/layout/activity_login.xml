@@ -15,34 +15,40 @@
         />
 
     <EditText
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:hint="Email"
         android:padding="10dp"
+        android:background="@drawable/textview_border"
         android:id="@+id/email"/>
 
     <EditText
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:hint="Password"
         android:padding="10dp"
+        android:background="@drawable/textview_border"
         android:id="@+id/password"/>
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:layout_marginTop="15sp"
         android:text="LOGIN"
-        android:padding="10dp"
+        android:textSize="11dp"
+        android:padding="7dp"
+        android:background="@drawable/textview_border"
         android:id="@+id/login"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New to Instagram? Register"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:text="Don't have an account? Register"
+        android:gravity="center"
         android:layout_marginTop="15dp"
+        android:textColor="#3C31DD"
         android:id="@+id/register_user"/>
 
 </LinearLayout>
