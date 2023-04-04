@@ -1,27 +1,20 @@
 package com.example.bewithyou;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class CartPage extends AppCompatActivity {
-    private RecyclerView mRecyclerViewCart;
-    private CartAdapter mCartAdapter;
+
     GridView gridView;
-    Button btnMinus, btnAdd;
+    Button btnMinus, btnAdd, btnPayment;
     TextView totalAmount, txtQuantity;
 
 
@@ -32,7 +25,6 @@ public class CartPage extends AppCompatActivity {
         setContentView(R.layout.activity_cart_page);
 
         getData.init(getApplicationContext());
-      //  List<Cart> photos = PhotoData.getPhotos();
 
         gridView = findViewById(R.id.gridview);
         btnAdd = findViewById(R.id.btnAdd);
@@ -42,6 +34,14 @@ public class CartPage extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
         String username = preferences.getString("username", "default_value");
 
+        btnPayment = findViewById(R.id.btnPayment);
+        btnPayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(CartPage.this, PaymentActivity.class));
+                finish();
+            }
+        });
 
         getData.getCardData(new Callback<List<Cart>>() {
 
@@ -66,14 +66,7 @@ public class CartPage extends AppCompatActivity {
             }
         });
 
-//        CartAdapter adapter = new CartAdapter(photos, getApplicationContext());
-
-       // gridView.setOnItemClickListener(onitemclick);
-
     }
-
-    // Function to retrieve data from Firebase and pass the data to the callback
-
 
 
 

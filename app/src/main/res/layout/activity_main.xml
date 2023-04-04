@@ -6,33 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btnAdd"
+
+    <ImageButton
+        android:id="@+id/btnCart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="57dp"
-        android:layout_marginEnd="175dp"
-        android:text="Add"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="338dp"
+        android:layout_marginTop="537dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="23dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="Cart"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_cart" />
 
-    <ListView
-        android:id="@+id/listview"
-        android:layout_width="match_parent"
-
-        android:layout_height="410dp"
-        android:layout_below="@+id/btnAdd"
-        android:layout_marginTop="119dp">
-
-    </ListView>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="congacon"
-        android:id="@+id/txtText">
-
-    </EditText>
 
 </RelativeLayout>
