@@ -1,20 +1,26 @@
 package com.example.bewithyou;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -22,45 +28,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-//public class CartAdapter extends RecyclerView.Adapter<CartViewHolder> {
-//
-//    private List<Cart> cartList;
-//    private Context context;
-//
-//    public CartAdapter(Context context) {
-//        this.cartList = cartList;
-//        this.context = context;
-//    }
-//
-//    @NonNull
-//    @Override
-//    public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cartview, parent, false);
-//
-//        return new CartViewHolder(view);
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
-//        Cart cart = cartList.get(position);
-//
-//        holder.textView_productName.setText(cart.getProductName());
-//        holder.textView_price.setText(String.valueOf(cart.getPrice()));
-//        holder.textView_quantity.setText(String.valueOf(cart.getQuantity()));
-//        Picasso.get().load(cart.getImgLink()).into(holder.imageView_cart);
-//    }
-//    public void setData(List<Cart> cartList) {
-//        this.cartList = cartList;
-//        notifyDataSetChanged();
-//    }
-//
-//    @Override
-//    public int getItemCount() {
-//        return 0;
-//    }
-//
-//
-//}
 public class CartAdapter extends BaseAdapter {
 
     private List<Cart> Cart_list;
@@ -97,6 +64,7 @@ public class CartAdapter extends BaseAdapter {
             dataitem.tv_name = convertView.findViewById(R.id.textView_productName);
             dataitem.tv_price=convertView.findViewById(R.id.textView_price);
             dataitem.tv_quantity=convertView.findViewById(R.id.textView_quantity);
+            dataitem.deleteButton = convertView.findViewById(R.id.btnDelete);
             convertView.setTag(dataitem);
         }else {
             dataitem = (MyView) convertView.getTag();
@@ -139,12 +107,25 @@ public class CartAdapter extends BaseAdapter {
                 }
             });
         }
+        if(dataitem.deleteButton !=null)
+        {
+             dataitem.deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    deleteCartItem(cartItem.getProductName());
+                }
+            });
+        }
 
 
         return convertView;
     }
     private void updateCartItem(Cart cart, String newQuantity) {
-        DatabaseReference cartRef = FirebaseDatabase.getInstance().getReference("cart").child(cart.getProductName());
+        SharedPreferences preferences = context.getSharedPreferences("MyPreferences", MODE_PRIVATE);
+        String username = preferences.getString("username", "default_value");
+
+
+        DatabaseReference cartRef = FirebaseDatabase.getInstance().getReference("cart").child(username).child(cart.getProductName());
 
         cart.setQuantity(newQuantity);
 
@@ -164,6 +145,25 @@ public class CartAdapter extends BaseAdapter {
                     }
                 });
     }
+    private void deleteCartItem(String cartId) {
+        SharedPreferences preferences = context.getSharedPreferences("MyPreferences", MODE_PRIVATE);
+        String username = preferences.getString("username", "default_value");
+        DatabaseReference cartRef = FirebaseDatabase.getInstance().getReference().child("cart").child(username).child(cartId);
+        cartRef.removeValue(new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                if (error == null) {
+
+                    Toast.makeText(context, "Item deleted from cart", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Handle error
+                    Toast.makeText(context, "Error deleting item from cart", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+
 
     private static class MyView{
         ImageView iv_photo;
@@ -171,8 +171,9 @@ public class CartAdapter extends BaseAdapter {
         TextView tv_price;
         TextView tv_quantity;
 
-        Button incrementButton;
-        Button decrementButton;
+        ImageButton incrementButton;
+        ImageButton decrementButton;
+        ImageButton deleteButton;
 
     }
 }
