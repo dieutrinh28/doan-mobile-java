@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,33 +9,30 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-
-        android:background="@drawable/rounded_corner"
-        >
+        android:layout_margin="16dp">
 
         <ImageView
             android:id="@+id/imageView_cart"
-            android:layout_width="105dp"
-            android:layout_height="108dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
             android:layout_margin="8dp"
             android:scaleType="centerCrop" />
 
         <LinearLayout
-            android:layout_width="260dp"
+            android:layout_width="350dp"
             android:layout_height="127dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:orientation="vertical"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp">
+            android:paddingStart="16dp" >
 
             <TextView
                 android:id="@+id/textView_productName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
-                android:text="Product Name"
+                android:text="Name"
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
 
@@ -54,8 +52,9 @@
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="5dp"
-                    android:background="@drawable/minus"
-                    android:textColor="#1CDC1F">
+                    android:background="@drawable/ic_minus"
+                    android:contentDescription="Minus"
+                    tools:ignore="TouchTargetSizeCheck">
 
                 </ImageButton>
 
@@ -76,8 +75,9 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
-                    android:background="@drawable/plus"
-                    android:textColor="#1CDC1F">
+                    android:background="@drawable/ic_add"
+                    android:contentDescription="Add"
+                    tools:ignore="TouchTargetSizeCheck">
 
                 </ImageButton>
 
@@ -89,8 +89,7 @@
         <LinearLayout
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView_price"
@@ -102,17 +101,16 @@
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+
             <ImageButton
                 android:id="@+id/btnDelete"
-                android:layout_width="20dp"
-                android:layout_height="25dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginLeft="21dp"
                 android:layout_marginTop="17dp"
-                android:background="@drawable/trash"
-                android:backgroundTint="@color/black"
-                android:padding="10dp"
-
-                android:scaleType="fitStart">
+                android:background="@drawable/ic_delete"
+                android:contentDescription="Delete"
+                android:padding="10dp">
 
             </ImageButton>
         </LinearLayout>

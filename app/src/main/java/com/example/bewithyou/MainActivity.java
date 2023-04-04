@@ -48,9 +48,11 @@ public class MainActivity extends AppCompatActivity {
         imageButtonCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, PaymentActivity.class));
+                startActivity(new Intent(MainActivity.this, CartPage.class));
             }
         });
+
+
 
     }
 }

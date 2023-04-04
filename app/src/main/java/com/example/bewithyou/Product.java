@@ -1,35 +1,28 @@
 package com.example.bewithyou;
 
 public class Product {
-    private String name;
+    private String productName;
     private String price;
-    private String color;
-    private String description;
-    private String link;
-    private String rating;
-    private String comment;
+    private String productDescription;
+    private String productImg;
 
 
     public Product() {
     }
 
-
-    public Product(String name, String price, String color, String description, String link, String rating, String comment) {
-        this.name = name;
+    public Product(String productName, String price, String productDescription, String productImg) {
+        this.productName = productName;
         this.price = price;
-        this.color = color;
-        this.description = description;
-        this.link = link;
-        this.rating = rating;
-        this.comment = comment;
+        this.productDescription = productDescription;
+        this.productImg = productImg;
     }
 
-    public String getName() {
-        return name;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public String getPrice() {
@@ -40,56 +33,28 @@ public class Product {
         this.price = price;
     }
 
-    public String getColor() {
-        return color;
+    public String getProductDescription() {
+        return productDescription;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
     }
 
-    public String getDescription() {
-        return description;
+    public String getProductImg() {
+        return productImg;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
-
-    public String getRating() {
-        return rating;
-    }
-
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setProductImg(String productImg) {
+        this.productImg = productImg;
     }
 
     @Override
     public String toString() {
         return "Product{" +
-                "name='" + name + '\'' +
+                "name='" + productName + '\'' +
                 ", price='" + price + '\'' +
-                ", color='" + color + '\'' +
-                ", description='" + description + '\'' +
-                ", link='" + link + '\'' +
-                ", rating='" + rating + '\'' +
-                ", comment='" + comment + '\'' +
-                '}';
+                ", description='" + productDescription + '\'' +
+                ", img='" + productImg + '\'' + '}';
     }
 }

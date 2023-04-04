@@ -107,7 +107,7 @@ public class getData {
                 for (DataSnapshot productSnapshot : snapshot.getChildren()) {
                     Product product = productSnapshot.getValue(Product.class);
 
-                    if (product != null && product.getName().toLowerCase().contains(productName.toLowerCase())) {
+                    if (product != null && product.getProductName().toLowerCase().contains(productName.toLowerCase())) {
                         productList.add(product);
                     }
                 }
@@ -143,8 +143,8 @@ public class getData {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for (DataSnapshot productSnapshot : snapshot.getChildren()) {
                                 Product product = productSnapshot.getValue(Product.class);
-                                if (product != null && product.getName() != null && productName != null) {
-                                    if (product.getName().toLowerCase().contains(productName.toLowerCase())) {
+                                if (product != null && product.getProductName() != null && productName != null) {
+                                    if (product.getProductName().toLowerCase().contains(productName.toLowerCase())) {
                                         productList.add(product);
                                     }
                                 }
@@ -176,7 +176,7 @@ public class getData {
     public static void getProductsInStore(String storeName, Callback<List<Product>> callback) {
         final String TAG = "Data";
         Log.d(TAG, "Getting products from database");
-        DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference(storeName);
+        DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference("Starbucks");
         productsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
