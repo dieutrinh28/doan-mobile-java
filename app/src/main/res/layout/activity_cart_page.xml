@@ -37,13 +37,15 @@
             android:text="Số lượng:"
             android:textSize="25dp"
             android:id="@+id/textView_quantity"
-            ></TextView>
+            >
+
+        </TextView>
         <Button
+            android:id="@+id/btnPayment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Thanh toán ngay"
             ></Button>
-        <!-- Add your views here, such as a TextView to display the total price and a button to checkout -->
 
     </LinearLayout>
 

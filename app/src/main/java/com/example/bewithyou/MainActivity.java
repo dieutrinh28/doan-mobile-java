@@ -4,11 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -32,9 +34,8 @@ import android.util.Log;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnAdd;
-    EditText txtData;
-    private ListView listview;
+    private ImageButton imageButtonCart;
+
 
 
     @SuppressLint("MissingInflatedId")
@@ -43,9 +44,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnAdd = findViewById(R.id.btnAdd);
-        listview = findViewById(R.id.listview);
-        txtData = findViewById(R.id.txtText);
+        imageButtonCart = findViewById(R.id.btnCart);
+        imageButtonCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, PaymentActivity.class));
+            }
+        });
 
     }
 }

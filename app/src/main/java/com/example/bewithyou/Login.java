@@ -63,7 +63,6 @@ public class Login extends AppCompatActivity {
                 String em = email.replace("@gmail.com","");
                 editor.putString("username", em);
                 editor.apply();
-
                 startActivity(new Intent(Login.this , CartPage.class));
                 finish();
             }
