@@ -22,45 +22,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-//public class CartAdapter extends RecyclerView.Adapter<CartViewHolder> {
-//
-//    private List<Cart> cartList;
-//    private Context context;
-//
-//    public CartAdapter(Context context) {
-//        this.cartList = cartList;
-//        this.context = context;
-//    }
-//
-//    @NonNull
-//    @Override
-//    public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cartview, parent, false);
-//
-//        return new CartViewHolder(view);
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
-//        Cart cart = cartList.get(position);
-//
-//        holder.textView_productName.setText(cart.getProductName());
-//        holder.textView_price.setText(String.valueOf(cart.getPrice()));
-//        holder.textView_quantity.setText(String.valueOf(cart.getQuantity()));
-//        Picasso.get().load(cart.getImgLink()).into(holder.imageView_cart);
-//    }
-//    public void setData(List<Cart> cartList) {
-//        this.cartList = cartList;
-//        notifyDataSetChanged();
-//    }
-//
-//    @Override
-//    public int getItemCount() {
-//        return 0;
-//    }
-//
-//
-//}
 public class CartAdapter extends BaseAdapter {
 
     private List<Cart> Cart_list;

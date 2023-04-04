@@ -10,7 +10,7 @@ import android.widget.Button;
 
 public class StartActivity extends AppCompatActivity {
 
-    private Button Register, Login , Search , Cart;
+    private Button Register, Login , Search , Cart, payment;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +20,7 @@ public class StartActivity extends AppCompatActivity {
         Login = findViewById(R.id.btnLogin);
         Search =findViewById(R.id.btnSearch);
         Cart = findViewById(R.id.btnCartpage);
+        payment = findViewById(R.id.btnPayment);
 
         Search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +47,14 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(StartActivity.this, Login.class));
+                finish();
+            }
+        });
+
+        payment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(StartActivity.this, PaymentActivity.class));
                 finish();
             }
         });
