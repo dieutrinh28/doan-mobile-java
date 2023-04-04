@@ -47,5 +47,7 @@ public class MainActivity extends AppCompatActivity {
         listview = findViewById(R.id.listview);
         txtData = findViewById(R.id.txtText);
 
+
+
     }
 }
