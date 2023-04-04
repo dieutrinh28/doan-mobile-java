@@ -3,6 +3,7 @@ package com.example.bewithyou;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,7 +34,12 @@ public class SearchPage extends AppCompatActivity implements SearchView.OnQueryT
         textView =findViewById(R.id.result);
         editText = findViewById(R.id.search);
         button = findViewById(R.id.buttonSearch);
-        
+
+        SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+        String username = preferences.getString("username", "default_value");
+        textView.setText(username.toString());
+
+
         button.setOnClickListener(new View.OnClickListener() {
             String name = editText.getText().toString();
             @Override

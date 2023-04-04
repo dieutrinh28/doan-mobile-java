@@ -1,6 +1,9 @@
 package com.example.bewithyou;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -215,21 +218,22 @@ public class getData {
         });
     }
 
-    public static void addToCart(String productName, String price, String quantity,String imgLink, String productId, Callback<String> callback) {
-        //String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference cartRef = FirebaseDatabase.getInstance().getReference("cart").child(productId);
+    public static void addToCart(String productName, String price, String quantity, String imgLink, String productId, String userName, Callback<String> callback) {
+        DatabaseReference cartRef = FirebaseDatabase.getInstance().getReference("cart").child(userName).child(productId);
 
         cartRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     // Product already exists in cart, update the quantity
-                    cartRef.child("quantity").setValue(quantity)
-                            .addOnSuccessListener(aVoid -> callback.onSuccess("Updated your card"))
+                    Cart cartItem = snapshot.getValue(Cart.class);
+                    cartItem.setQuantity(quantity);
+                    cartRef.setValue(cartItem)
+                            .addOnSuccessListener(aVoid -> callback.onSuccess("Updated your cart"))
                             .addOnFailureListener(e -> callback.onError(e.getMessage()));
                 } else {
                     // Product does not exist in cart, add it
-                    Cart cartItem = new Cart(productName, price, quantity,imgLink);
+                    Cart cartItem = new Cart(productName, price, quantity, imgLink);
                     cartRef.setValue(cartItem)
                             .addOnSuccessListener(aVoid -> callback.onSuccess("Product added to cart"))
                             .addOnFailureListener(e -> callback.onError(e.getMessage()));
@@ -242,10 +246,14 @@ public class getData {
             }
         });
     }
-    public static void getCardData( Callback<List<Cart>> callback) {
+
+    public static void getCardData(Callback<List<Cart>> callback) {
+        SharedPreferences preferences = context.getSharedPreferences("MyPreferences", MODE_PRIVATE);
+        String username = preferences.getString("username", "default_value");
+
         final String TAG = "Data";
         Log.d(TAG, "Getting products from database");
-        DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference("cart");
+        DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference("cart").child(username);
         productsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
