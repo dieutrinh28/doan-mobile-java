@@ -61,29 +61,29 @@ public class SearchPage extends AppCompatActivity implements SearchView.OnQueryT
             }
         });
 
-        RatingBar ratingBar = findViewById(R.id.ratingBar);
+        //RatingBar ratingBar = findViewById(R.id.ratingBar);
 
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                // Handle the rating change here
-                int myRating = (int) rating;
-
-                        getData.updateProductRating("Orchid Oasis", "Chili", String.valueOf(myRating), new Callback<Boolean>() {
-                            @Override
-                            public void onSuccess(Boolean data) {
-                                Toast.makeText(SearchPage.this,myRating+" sao ne",Toast.LENGTH_SHORT).show();
-                            }
-
-                            @Override
-                            public void onError(String errorMessage) {
-
-                            }
-                        });
-
-
-            }
-        });
+//        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+//            @Override
+//            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+//                // Handle the rating change here
+//                int myRating = (int) rating;
+//
+//                        getData.updateStoreRating("Orchid Oasis", "Chili", String.valueOf(myRating), new Callback<Boolean>() {
+//                            @Override
+//                            public void onSuccess(Boolean data) {
+//                                Toast.makeText(SearchPage.this,myRating+" sao ne",Toast.LENGTH_SHORT).show();
+//                            }
+//
+//                            @Override
+//                            public void onError(String errorMessage) {
+//
+//                            }
+//                        });
+//
+//
+//            }
+//        });
 
     }
 

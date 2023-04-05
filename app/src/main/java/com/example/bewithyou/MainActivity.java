@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -27,15 +28,15 @@ import java.util.HashMap;
 import java.util.List;
 
 import android.util.Log;
+import android.widget.RatingBar;
+import android.widget.Toast;
 
 
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnAdd;
-    EditText txtData;
-    private ListView listview;
 
+    GridView gridViewStore;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -43,9 +44,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnAdd = findViewById(R.id.btnAdd);
-        listview = findViewById(R.id.listview);
-        txtData = findViewById(R.id.txtText);
+        gridViewStore = findViewById(R.id.gridViewStore);
+        RatingBar ratingBar = findViewById(R.id.ratingBar);
+
+        getData.getStoreData(new Callback<List<Store>>() {
+            @Override
+            public void onSuccess(List<Store> data) {
+                StoreAdapter adapter = new StoreAdapter(data, getApplicationContext());
+                gridViewStore.setAdapter(adapter);
+                Log.d("TAG", "onSuccess: "+ "ngan");
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+
+            }
+        });
+
 
 
 
