@@ -63,35 +63,6 @@
           ]
         }
       }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:148302997741:android:f5ce2d3f7470c3fbca44e4",
-        "android_client_info": {
-          "package_name": "com.example.mobile_finalexam"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "148302997741-0i5lnupkldobrh6lvgu0r4u8vtj02kno.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBfee56UiHMgGznSxeQuvdTL6Onni0st60"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "148302997741-0i5lnupkldobrh6lvgu0r4u8vtj02kno.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
     }
   ],
   "configuration_version": "1"
