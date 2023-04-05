@@ -29,20 +29,23 @@
                 android:textStyle="bold"
                 android:layout_marginLeft="8dp"
                 android:layout_gravity="center"
+                android:textColor="#FA275A"
                 android:text="User name"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:orientation="horizontal">
 
-            <RatingBar
-                android:contentDescription="Rating"
+            <me.zhanghai.android.materialratingbar.MaterialRatingBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:scaleX="0.5"
-                android:scaleY="0.5"
+                android:layout_gravity="center"
+                android:isIndicator="false"
+                android:maxHeight="20dp"
+                android:minHeight="20dp"
                 android:numStars="5"
                 android:stepSize="1"
                 android:rating="3"
@@ -52,6 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
+                android:layout_marginLeft="8dp"
                 android:layout_gravity="center"
                 android:text="Date time" />
         </LinearLayout>

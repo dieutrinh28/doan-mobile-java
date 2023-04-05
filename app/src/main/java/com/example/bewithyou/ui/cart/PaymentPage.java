@@ -10,7 +10,6 @@ import com.example.bewithyou.Callback;
 import com.example.bewithyou.R;
 import com.example.bewithyou.getData;
 import com.example.bewithyou.model.Cart;
-import com.example.bewithyou.ui.cart.CartAdapter;
 
 import java.util.List;
 
