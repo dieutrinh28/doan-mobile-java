@@ -44,10 +44,10 @@ public class ProductAdapter extends BaseAdapter {
             dataitem = new MyView();
             convertView = inflater.inflate(R.layout.activity_item_product, null);
 
-            dataitem.iv_photo = convertView.findViewById(R.id.imgView);
-            dataitem.tv_name = convertView.findViewById(R.id.txtName);
-            dataitem.tv_price = convertView.findViewById(R.id.txtPrice);
-            dataitem.tv_description = convertView.findViewById(R.id.txtDescription);
+            dataitem.iv_photo = convertView.findViewById(R.id.imv_product);
+            dataitem.tv_name = convertView.findViewById(R.id.tv_itemname);
+            dataitem.tv_price = convertView.findViewById(R.id.tv_itemprice);
+            dataitem.tv_description = convertView.findViewById(R.id.tv_itemdescription);
 
             convertView.setTag(dataitem);
         } else {
@@ -57,12 +57,10 @@ public class ProductAdapter extends BaseAdapter {
         //  Picasso.get().load(photo_list.get(position).getSource_photo()).resize(300, 400).centerCrop().into(dataitem.iv_photo);
 
         //  Picasso.get().load((PhotoData.getPhotoById(id).getSource_photo())).resize(400,500).centerCrop().into(iv_detail);
-        Picasso.get().load(product_list.get(position).getProductImg()).resize(300, 400).centerCrop().into(dataitem.iv_photo);
+        Picasso.get().load(product_list.get(position).getProductImg()).into(dataitem.iv_photo);
         dataitem.tv_name.setText(product_list.get(position).getProductName());
         dataitem.tv_price.setText(product_list.get(position).getPrice());
-        dataitem.tv_description.setText(product_list.get(position).getProductDescription());
-
-
+        dataitem.tv_description.setText(product_list.get(position).getShort_description(product_list.get(position).getProductDescription()));
 
         return convertView;
     }

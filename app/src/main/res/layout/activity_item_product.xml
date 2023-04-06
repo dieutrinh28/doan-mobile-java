@@ -2,30 +2,51 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:padding="25dp">
 
     <ImageView
-        android:id="@+id/imgView"
+        android:id="@+id/imv_product"
         android:layout_width="100dp"
-        android:layout_height="90dp"
-        android:scaleType="centerCrop"
-        android:layout_marginRight="20dp"/>
+        android:layout_height="100dp"
+        android:layout_gravity="center_vertical"
+        android:contentDescription="This is product's image"
+        tools:srcCompat="@tools:sample/avatars"/>
 
-    <TextView
-        android:id="@+id/txtName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Product Name"
-        android:textStyle="bold"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:orientation="vertical"
+        android:layout_marginLeft="15dp">
 
-    <TextView
-        android:id="@+id/txtPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/txtDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
+        <TextView
+            android:id="@+id/tv_itemname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tên sản phẩm là A "
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tv_itemprice"
+            android:text="100.000đ"
+            android:textSize="15sp"
+            android:textColor="@color/red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_itemdescription"
+                android:text="Sản phẩm này gồm có...."
+                android:textSize="@dimen/description_textSize"
+                android:textStyle="italic"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </ScrollView>
+    </LinearLayout>
 </LinearLayout>

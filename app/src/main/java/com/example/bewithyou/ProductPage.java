@@ -19,20 +19,19 @@ public class ProductPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_page);
 
-
         getData.init(getApplicationContext());
 
-        gridView = findViewById(R.id.gridView);
+        gridView = findViewById(R.id.product_display_gridview);
 
         getData.getProductsInStore("Starbucks",new Callback<List<Product>>() {
             @Override
             public void onSuccess(List<Product> data) {
                 ProductAdapter adapter = new ProductAdapter(data, getApplicationContext());
                 gridView.setAdapter(adapter);
-                for (Product hi: data
+                int quantity = 1;
+                for (Product pro: data
                      ) {
-                    System.out.println(hi.toString());
-
+                    System.out.print(pro.toString());
                 }
                 Log.d("TAG", "onSuccess: ");
             }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="normal_textSize">20sp</dimen>
+    <dimen name="name_textSize">25sp</dimen>
+    <dimen name="description_textSize">15sp</dimen>
+    <dimen name="df_padding">20dp</dimen>
+    <dimen name="df_margin">10dp</dimen>
+</resources>
