@@ -307,4 +307,23 @@ public class getData {
         });
 
     }
+
+    public static void writeReview(String userId, String rating, String comment, String date, String storeName, String reviewId, Callback<String> callback) {
+        DatabaseReference reviewRef = FirebaseDatabase.getInstance().getReference("review").child(storeName).child(reviewId);
+
+        reviewRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Review reviewItem = new Review(storeName, comment, date, rating, userId);
+                reviewRef.setValue(reviewItem)
+                        .addOnSuccessListener(aVoid ->  callback.onSuccess("Review added"))
+                        .addOnFailureListener(e -> callback.onError(e.getMessage()));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                callback.onError(error.getMessage());
+            }
+        });
+    }
 }
