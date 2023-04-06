@@ -118,14 +118,17 @@
 
         </LinearLayout>
 
+        <Button
+            android:id="@+id/btnOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đặt đơn"
+            android:backgroundTint="#FA275A"
+            android:layout_margin="16dp"
+            />
+
     </LinearLayout>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Đặt đơn"
-        android:backgroundTint="#FA275A"
-        android:layout_margin="16dp"
-        />
+
 
 </LinearLayout>

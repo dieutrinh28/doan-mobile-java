@@ -56,7 +56,7 @@ public class CartAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if(convertView == null){
             dataitem = new MyView();
-            convertView = inflater.inflate(R.layout.cartview, null);
+            convertView = inflater.inflate(R.layout.cart_item, null);
             dataitem.incrementButton = convertView.findViewById(R.id.btnAdd);
             dataitem.decrementButton = convertView.findViewById(R.id.btnMinus);
             dataitem.iv_photo = convertView.findViewById(R.id.imageView_cart);

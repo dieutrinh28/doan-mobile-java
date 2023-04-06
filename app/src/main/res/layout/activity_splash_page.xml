@@ -8,10 +8,10 @@
     android:gravity="center"
     tools:context=".SplashPage">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:layout_margin="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/ic_logo" />
 
     <TextView

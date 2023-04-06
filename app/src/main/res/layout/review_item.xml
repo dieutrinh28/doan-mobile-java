@@ -15,7 +15,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgUser"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="8dp"
@@ -23,6 +24,7 @@
                 android:layout_gravity="center"/>
 
             <TextView
+                android:id="@+id/txtUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
@@ -40,6 +42,7 @@
             android:orientation="horizontal">
 
             <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                android:id="@+id/ratingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -50,8 +53,10 @@
                 android:stepSize="1"
                 android:rating="3"
                 android:progressTint="#FA275A"
+                android:contentDescription="Rating"
                 />
             <TextView
+                android:id="@+id/txtDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
@@ -61,6 +66,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/txtComment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"

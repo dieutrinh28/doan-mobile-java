@@ -43,7 +43,7 @@ public class ProductAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView == null) {
             dataitem = new MyView();
-            convertView = inflater.inflate(R.layout.activity_item_product, null);
+            convertView = inflater.inflate(R.layout.product_item, null);
 
             dataitem.iv_photo = convertView.findViewById(R.id.imgView);
             dataitem.tv_name = convertView.findViewById(R.id.txtName);

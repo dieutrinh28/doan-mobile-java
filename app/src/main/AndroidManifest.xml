@@ -12,7 +12,10 @@
         android:theme="@style/Theme.BeWithYou"
         tools:targetApi="31">
         <activity
-            android:name=".ReviewPage"
+            android:name=".ui.review.RateStoreDialog"
+            android:exported="false" />
+        <activity
+            android:name=".ui.review.ReviewPage"
             android:exported="false" />
         <activity
             android:name=".ui.cart.PaymentPage"
