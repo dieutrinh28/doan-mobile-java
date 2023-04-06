@@ -1,61 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailProductActivity"
-    android:paddingBottom="10dp">
-    <LinearLayout
+    android:orientation="vertical"
+    tools:context=".DetailProductActivity">
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <ImageView
-            android:id="@+id/imv_product"
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            tools:srcCompat="@tools:sample/avatars">
-        </ImageView>
-
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="10dp">
-
-            <TextView
-                android:id="@+id/tv_product_name"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:textSize="@dimen/name_textSize"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:text="Name" />
-
-            <TextView
-                android:id="@+id/tv_product_price"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/imv_product"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Price"
-                android:textAlignment="textEnd"
-                android:textColor="@color/primary_color"
-                android:textSize="@dimen/normal_textSize" />
+                android:layout_height="400dp"
+                tools:srcCompat="@tools:sample/avatars">
+            </ImageView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/tv_product_name"
+                    android:layout_width="250dp"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/name_textSize"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="Name" />
+
+                <TextView
+                    android:id="@+id/tv_product_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Price"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/primary_color"
+                    android:textSize="@dimen/normal_textSize" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="@color/gray"
+                android:layout_margin="5dp"/>
+            <EditText
+                android:id="@+id/tv_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="   Ghi chú thêm cho món này"
+                android:padding="@dimen/df_padding"
+                android:layout_margin="@dimen/df_margin"
+                android:background="@drawable/on_select_border"
+                android:drawableLeft="@drawable/ic_note_button"
+                />
         </LinearLayout>
-        <EditText
-            android:id="@+id/tv_note"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="   Ghi chú thêm cho món này"
-            android:padding="@dimen/df_padding"
-            android:layout_margin="@dimen/df_margin"
-            android:background="@drawable/on_select_border"
-            android:drawableLeft="@drawable/ic_note_button"
-            />
+    </ScrollView>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:id="@+id/bottom_nav"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/nav_border">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp"
             android:gravity="center_vertical|center_horizontal">
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -63,9 +78,10 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical|center_horizontal"
                 android:background="@drawable/normal_border"
-                android:layout_margin="5dp">
+                android:layout_margin="5dp"
+                android:padding="5dp" >
                 <ImageButton
-                    android:id="@+id/btnMinus"
+                    android:id="@+id/btn_minus"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_margin="5dp"
@@ -76,7 +92,7 @@
 
                 </ImageButton>
                 <TextView
-                    android:id="@+id/textView_quantity"
+                    android:id="@+id/tv_quantity"
                     android:layout_width="35dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -85,7 +101,7 @@
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
                 <ImageButton
-                    android:id="@+id/btnAdd"
+                    android:id="@+id/btn_plus"
                     android:layout_width="48dp"
                     android:layout_margin="5dp"
                     android:layout_height="48dp"
@@ -97,6 +113,7 @@
                 </ImageButton>
             </LinearLayout>
             <Button
+                android:id="@+id/btn_addtocart"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:backgroundTint="@color/primary_color"
@@ -106,9 +123,8 @@
                 android:text="Add to cart">
             </Button>
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
-
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+</RelativeLayout>
 
 
 
