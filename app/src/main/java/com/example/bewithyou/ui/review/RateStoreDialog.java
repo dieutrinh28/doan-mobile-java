@@ -60,8 +60,7 @@ public class RateStoreDialog extends AppCompatActivity {
                 final String date = dateFormat.format(currentTime);
 
                 SharedPreferences userIdRef = getSharedPreferences("MyPreferences", MODE_PRIVATE);
-                String username = userIdRef.getString("username", "default_value");
-                final String userId = username;
+                String userId = userIdRef.getString("username", "default_value");
 
                 SharedPreferences storeRef = getSharedPreferences("MyPreferences", MODE_PRIVATE);
                 String storeName = storeRef.getString("storeName", "Starbucks");
