@@ -285,6 +285,7 @@ public class getData {
                 for (DataSnapshot storeSnapshot : dataSnapshot.getChildren()) {
                     Store store = storeSnapshot.getValue(Store.class);
                     storeList.add(store);
+                    Log.d(TAG, "onDataChange: "+"hiii");
                 }
                 callback.onSuccess(storeList);
             }
