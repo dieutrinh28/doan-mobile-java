@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -18,10 +19,14 @@ import com.example.bewithyou.Callback;
 import com.example.bewithyou.R;
 import com.example.bewithyou.SearchPage;
 import com.example.bewithyou.getData;
+import com.example.bewithyou.model.Review;
+import com.example.bewithyou.ui.cart.CartPage;
 import com.example.bewithyou.ui.cart.PaymentPage;
+import com.example.bewithyou.ui.home.HomePage;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import me.zhanghai.android.materialratingbar.MaterialRatingBar;
 
@@ -40,6 +45,7 @@ public class RateStoreDialog extends AppCompatActivity {
         btnLater.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startActivity(new Intent(RateStoreDialog.this, HomePage.class));
             }
         });
 
@@ -52,22 +58,20 @@ public class RateStoreDialog extends AppCompatActivity {
                 Date currentTime = new Date(System.currentTimeMillis());
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 final String date = dateFormat.format(currentTime);
-                final String userId = "1";
-                final String storeName = "Starbucks";
-                final String reviewId = "review3";
 
-                getData.writeReview(userId, rating, comment, date, storeName, reviewId, new Callback<String>() {
-                    @Override
-                    public void onSuccess(String data) {
-                    }
+                SharedPreferences userIdRef = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+                String username = userIdRef.getString("username", "default_value");
+                final String userId = username;
 
-                    @Override
-                    public void onError(String errorMessage) {
+                SharedPreferences storeRef = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+                String storeName = storeRef.getString("storeName", "Starbucks");
 
-                    }
-                });
+                getData.addNewReview(userId, rating, comment, date, storeName);
+                startActivity(new Intent(RateStoreDialog.this, HomePage.class));
+
             }
         });
+
 
     }
 }

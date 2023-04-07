@@ -308,21 +308,27 @@ public class getData {
 
     }
 
-    public static void writeReview(String userId, String rating, String comment, String date, String storeName, String reviewId, Callback<String> callback) {
-        DatabaseReference reviewRef = FirebaseDatabase.getInstance().getReference("review").child(storeName).child(reviewId);
+    public static void addNewReview(String userId, String rating, String comment, String date, String storeName) {
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("review").child(storeName);
 
-        reviewRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Review reviewItem = new Review(storeName, comment, date, rating, userId);
-                reviewRef.setValue(reviewItem)
-                        .addOnSuccessListener(aVoid ->  callback.onSuccess("Review added"))
-                        .addOnFailureListener(e -> callback.onError(e.getMessage()));
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long count = dataSnapshot.getChildrenCount();
+                String reviewId = "review" + (count + 1);
+
+                DatabaseReference newReviewRef = databaseRef.child(reviewId);
+                newReviewRef.child("userId").setValue(userId);
+                newReviewRef.child("rating").setValue(rating);
+                newReviewRef.child("comment").setValue(comment);
+                newReviewRef.child("date").setValue(date);
+
+                Log.d("TAG", "New review saved with id: " + reviewId);
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                callback.onError(error.getMessage());
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("TAG", "Database error: " + databaseError.getMessage());
             }
         });
     }
