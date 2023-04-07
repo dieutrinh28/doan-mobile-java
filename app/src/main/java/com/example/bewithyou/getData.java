@@ -8,6 +8,10 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.bewithyou.model.Cart;
+import com.example.bewithyou.model.Product;
+import com.example.bewithyou.model.Review;
+import com.example.bewithyou.model.Store;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -289,7 +293,6 @@ public class getData {
                 }
                 callback.onSuccess(storeList);
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.e(TAG, "Error retrieving products from database: " + databaseError.getMessage());
@@ -298,4 +301,33 @@ public class getData {
         });
     }
 
+    public static void getReviewData(Callback<List<Review>> listCallback) {
+        SharedPreferences preferences = context.getSharedPreferences("MyPreferences", MODE_PRIVATE);
+        String storeName = preferences.getString("storeName", "Starbucks");
+
+        final String TAG = "Data";
+        Log.d(TAG, "Getting reviews from database");
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reviewRef = database.getReference("review").child(storeName);
+
+        reviewRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<Review> reviewList = new ArrayList<>();
+                for (DataSnapshot reviewSnapshot: snapshot.getChildren()) {
+                    Review review = reviewSnapshot.getValue(Review.class);
+                    reviewList.add(review);
+                }
+                listCallback.onSuccess(reviewList);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e(TAG, "Error 'retrieving' reviews from database: " + error.getMessage());
+                listCallback.onError(error.getMessage());
+            }
+        });
+
+    }
 }

@@ -6,31 +6,40 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.BeWithYou"
         tools:targetApi="31">
         <activity
-            android:name=".ProductPage"
+            android:name=".ui.review.RateStoreDialog"
             android:exported="false" />
         <activity
-            android:name=".CartPage"
+            android:name=".ui.review.ReviewPage"
+            android:exported="false" />
+        <activity
+            android:name=".ui.cart.PaymentPage"
+            android:exported="false" />
+        <activity
+            android:name=".ui.product.ProductPage"
+            android:exported="false" />
+        <activity
+            android:name=".ui.cart.CartPage"
             android:exported="false" />
         <activity
             android:name=".SearchPage"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.home.HomePage"
             android:exported="false" />
         <activity
-            android:name=".Register"
+            android:name=".ui.auth.RegisterPage"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".ui.auth.LoginPage"
             android:exported="false" />
         <activity
-            android:name=".StartActivity"
+            android:name=".SplashPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

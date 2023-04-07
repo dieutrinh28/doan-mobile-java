@@ -1,7 +1,6 @@
-package com.example.bewithyou;
+package com.example.bewithyou.ui.product;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.bewithyou.R;
+import com.example.bewithyou.model.Product;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -42,7 +43,7 @@ public class ProductAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView == null) {
             dataitem = new MyView();
-            convertView = inflater.inflate(R.layout.activity_item_product, null);
+            convertView = inflater.inflate(R.layout.product_item, null);
 
             dataitem.iv_photo = convertView.findViewById(R.id.imgView);
             dataitem.tv_name = convertView.findViewById(R.id.txtName);

@@ -1,4 +1,4 @@
-package com.example.bewithyou;
+package com.example.bewithyou.ui.auth;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,12 +12,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bewithyou.R;
+import com.example.bewithyou.ui.cart.CartPage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Login extends AppCompatActivity {
+public class LoginPage extends AppCompatActivity {
 
     private EditText email;
     private EditText password;
@@ -29,7 +31,7 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login_page);
 
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
@@ -57,14 +59,13 @@ public class Login extends AppCompatActivity {
         Auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginPage.this, "Login Successful", Toast.LENGTH_SHORT).show();
                 SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 String em = email.replace("@gmail.com","");
                 editor.putString("username", em);
                 editor.apply();
-
-                startActivity(new Intent(Login.this , CartPage.class));
+                startActivity(new Intent(LoginPage.this , CartPage.class));
                 finish();
             }
         });

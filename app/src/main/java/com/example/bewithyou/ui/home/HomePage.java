@@ -1,44 +1,30 @@
-package com.example.bewithyou;
+package com.example.bewithyou.ui.home;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.GridView;
-import android.widget.ListView;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import android.util.Log;
+import android.view.View;
+import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
-import android.widget.Toast;
 
+import com.example.bewithyou.Callback;
+import com.example.bewithyou.R;
+import com.example.bewithyou.getData;
+import com.example.bewithyou.model.Store;
+import com.example.bewithyou.ui.cart.CartPage;
 
-import java.util.Map;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity {
+public class HomePage extends AppCompatActivity {
+    private ImageButton imageButtonCart;
 
     GridView gridViewStore;
 
@@ -47,14 +33,23 @@ public class MainActivity extends AppCompatActivity {
 
     private int currentPage = 0;
     private Timer timer;
-    private final long DELAY_MS = 500;//đặt khoảng thời gian delay cho mỗi lần chuyển trang
-    private final long PERIOD_MS = 3000;//đặt khoảng thời gian chuyển trang
+    private final long DELAY_MS = 500; //đặt khoảng thời gian delay cho mỗi lần chuyển trang
+    private final long PERIOD_MS = 3000; //đặt khoảng thời gian chuyển trang
+
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home_page);
+
+        imageButtonCart = findViewById(R.id.btnCart);
+        imageButtonCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomePage.this, CartPage.class));
+            }
+        });
 
         gridViewStore = findViewById(R.id.gridViewStore);
         RatingBar ratingBar = findViewById(R.id.ratingBar);
@@ -73,14 +68,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         viewPager = findViewById(R.id.viewPaper);
         ViewpaperAdapter adapter = new ViewpaperAdapter(this);
         viewPager.setAdapter(adapter);
 
         startAutoSlider();
     }
-    //hàm khởi tạo timer để tự động chuyển trang trong ViewPager
     private void startAutoSlider() {
         final Handler handler = new Handler();
         final Runnable update = new Runnable() {
