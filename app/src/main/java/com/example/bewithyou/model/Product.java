@@ -36,6 +36,24 @@ public class Product {
     public String getProductDescription() {
         return productDescription;
     }
+    public static String getShort_description(String description) {
+        if(description == null || description.isEmpty()){
+            return "";
+        }
+        String[] words = description.split(" ");
+
+        if(words.length <= 10){
+            return  description;
+        }else{
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < 20; i++) {
+                sb.append(words[i]);
+                sb.append(" ");
+            }
+            sb.append("...");
+            return sb.toString();
+        }
+    }
 
     public void setProductDescription(String productDescription) {
         this.productDescription = productDescription;

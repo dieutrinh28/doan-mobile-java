@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.example.bewithyou.Callback;
@@ -26,22 +29,18 @@ public class ProductPage extends AppCompatActivity {
         setContentView(R.layout.activity_product_page);
 
         SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
-        String storename = preferences.getString("storeName", "default_value");
+        String storeName = preferences.getString("storeName", "default_value");
 
         getData.init(getApplicationContext());
 
-        gridView = findViewById(R.id.gridView);
+        gridView = findViewById(R.id.product_display_gridview);
 
-        getData.getProductsInStore(storename,new Callback<List<Product>>() {
+        getData.getProductsInStore(storeName,new Callback<List<Product>>() {
             @Override
             public void onSuccess(List<Product> data) {
                 ProductAdapter adapter = new ProductAdapter(data, getApplicationContext());
                 gridView.setAdapter(adapter);
-                for (Product hi: data
-                     ) {
-                    System.out.println(hi.toString());
 
-                }
                 Log.d("TAG", "onSuccess: ");
             }
 
@@ -50,5 +49,6 @@ public class ProductPage extends AppCompatActivity {
 
             }
         });
+
     }
 }

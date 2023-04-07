@@ -1,6 +1,8 @@
 package com.example.bewithyou.ui.product;
 
 import android.content.Context;
+
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.bewithyou.DetailProductActivity;
 import com.example.bewithyou.R;
 import com.example.bewithyou.model.Product;
 import com.squareup.picasso.Picasso;
@@ -45,10 +48,10 @@ public class ProductAdapter extends BaseAdapter {
             dataitem = new MyView();
             convertView = inflater.inflate(R.layout.product_item, null);
 
-            dataitem.iv_photo = convertView.findViewById(R.id.imgView);
-            dataitem.tv_name = convertView.findViewById(R.id.txtName);
-            dataitem.tv_price = convertView.findViewById(R.id.txtPrice);
-            dataitem.tv_description = convertView.findViewById(R.id.txtDescription);
+            dataitem.iv_photo = convertView.findViewById(R.id.imv_product);
+            dataitem.tv_name = convertView.findViewById(R.id.tv_itemname);
+            dataitem.tv_price = convertView.findViewById(R.id.tv_itemprice);
+            dataitem.tv_description = convertView.findViewById(R.id.tv_itemdescription);
 
             convertView.setTag(dataitem);
         } else {
@@ -58,13 +61,20 @@ public class ProductAdapter extends BaseAdapter {
         //  Picasso.get().load(photo_list.get(position).getSource_photo()).resize(300, 400).centerCrop().into(dataitem.iv_photo);
 
         //  Picasso.get().load((PhotoData.getPhotoById(id).getSource_photo())).resize(400,500).centerCrop().into(iv_detail);
-        Picasso.get().load(product_list.get(position).getProductImg()).resize(300, 400).centerCrop().into(dataitem.iv_photo);
+        Picasso.get().load(product_list.get(position).getProductImg()).into(dataitem.iv_photo);
         dataitem.tv_name.setText(product_list.get(position).getProductName());
         dataitem.tv_price.setText(product_list.get(position).getPrice());
-        dataitem.tv_description.setText(product_list.get(position).getProductDescription());
+        dataitem.tv_description.setText(product_list.get(position).getShort_description(product_list.get(position).getProductDescription()));
 
-
-
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), DetailProductActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("product_name",product_list.get(position).getProductName());
+                context.startActivity(intent);
+            }
+        });
         return convertView;
     }
 
