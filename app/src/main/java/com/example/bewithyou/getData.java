@@ -227,7 +227,8 @@ public class getData {
                 if (snapshot.exists()) {
                     // Product already exists in cart, update the quantity
                     Cart cartItem = snapshot.getValue(Cart.class);
-                    cartItem.setQuantity(quantity);
+                    int currentQuantity = Integer.parseInt(cartItem.getQuantity());
+                    cartItem.setQuantity(String.valueOf(currentQuantity+(Integer.parseInt(quantity))));
                     cartRef.setValue(cartItem)
                             .addOnSuccessListener(aVoid -> callback.onSuccess("Updated your cart"))
                             .addOnFailureListener(e -> callback.onError(e.getMessage()));
