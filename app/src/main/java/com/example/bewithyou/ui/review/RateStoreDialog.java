@@ -25,12 +25,7 @@ import java.util.Date;
 
 import me.zhanghai.android.materialratingbar.MaterialRatingBar;
 
-public class RateStoreDialog extends Dialog {
-
-
-    public RateStoreDialog(@NonNull Context context) {
-        super(context);
-    }
+public class RateStoreDialog extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +40,6 @@ public class RateStoreDialog extends Dialog {
         btnLater.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dismiss();
             }
         });
 

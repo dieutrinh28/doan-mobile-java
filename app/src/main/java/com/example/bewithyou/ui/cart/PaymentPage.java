@@ -43,12 +43,15 @@ public class PaymentPage extends AppCompatActivity {
         order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RateStoreDialog rateStoreDialog = new RateStoreDialog(PaymentPage.this);
+                /*RateStoreDialog rateStoreDialog = new RateStoreDialog(PaymentPage.this);
                 rateStoreDialog.getWindow().setBackgroundDrawable(new ColorDrawable(
                         getResources().getColor(android.R.color.transparent)
                 ));
                 rateStoreDialog.setCancelable(false);
-                rateStoreDialog.show();
+                rateStoreDialog.show();*/
+
+                Intent intent = new Intent(PaymentPage.this, RateStoreDialog.class);
+                startActivity(intent);
             }
         });
 
