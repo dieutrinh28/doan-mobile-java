@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import com.example.bewithyou.model.Cart;
 import com.example.bewithyou.model.Product;
 import com.example.bewithyou.model.Review;
+import com.example.bewithyou.model.Store;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -45,8 +46,8 @@ public class getData {
         });
     }
 
-    public static void updateProductRating(String storeName, String productId, String newRating, final Callback<Boolean> callback) {
-        DatabaseReference productRef = FirebaseDatabase.getInstance().getReference().child(storeName).child(productId).child("rating");
+    public static void updateStoreRating(String storeName, String newRating, final Callback<Boolean> callback) {
+        DatabaseReference productRef = FirebaseDatabase.getInstance().getReference("stores").child(storeName).child("rating");
         productRef.setValue(newRating).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -276,9 +277,31 @@ public class getData {
         });
     }
 
+    public static void getStoreData(Callback<List<Store>> callback){
+        final String TAG = "Data";
+        Log.d(TAG, "Getting products from database");
+        DatabaseReference storesRef = FirebaseDatabase.getInstance().getReference("stores");
+
+        storesRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<Store> storeList = new ArrayList<>();
+                for (DataSnapshot storeSnapshot : dataSnapshot.getChildren()) {
+                    Store store = storeSnapshot.getValue(Store.class);
+                    storeList.add(store);
+                    Log.d(TAG, "onDataChange: "+"hiii");
+                }
+                callback.onSuccess(storeList);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e(TAG, "Error retrieving products from database: " + databaseError.getMessage());
+                callback.onError(databaseError.getMessage());
+            }
+        });
+    }
 
     public static void getReviewData(Callback<List<Review>> listCallback) {
-
         SharedPreferences preferences = context.getSharedPreferences("MyPreferences", MODE_PRIVATE);
         String storeName = preferences.getString("storeName", "Starbucks");
 
