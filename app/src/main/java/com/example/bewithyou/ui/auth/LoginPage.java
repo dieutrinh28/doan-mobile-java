@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.bewithyou.R;
 import com.example.bewithyou.ui.cart.CartPage;
+import com.example.bewithyou.ui.home.HomePage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -65,7 +66,7 @@ public class LoginPage extends AppCompatActivity {
                 String em = email.replace("@gmail.com","");
                 editor.putString("username", em);
                 editor.apply();
-                startActivity(new Intent(LoginPage.this , CartPage.class));
+                startActivity(new Intent(LoginPage.this , HomePage.class));
                 finish();
             }
         });

@@ -15,13 +15,16 @@
             android:name=".ui.review.RateStoreDialog"
             android:exported="false" />
         <activity
+            android:name=".ui.product.ProductPage"
+            android:exported="false" />
+        <activity
             android:name=".ui.review.ReviewPage"
             android:exported="false" />
         <activity
             android:name=".ui.cart.PaymentPage"
             android:exported="false" />
         <activity
-            android:name=".ui.product.ProductPage"
+            android:name=".DetailProductActivity"
             android:exported="false" />
         <activity
             android:name=".ui.cart.CartPage"

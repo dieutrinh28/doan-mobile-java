@@ -63,7 +63,7 @@ public class getData {
     public static void getSpecificProduct(String storeName, String name, Callback<Product> callback) {
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(storeName);
 
-        Query query = databaseRef.orderByChild("name").equalTo(name);
+        Query query = databaseRef.orderByChild("productName").equalTo(name);
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -231,7 +231,8 @@ public class getData {
                 if (snapshot.exists()) {
                     // Product already exists in cart, update the quantity
                     Cart cartItem = snapshot.getValue(Cart.class);
-                    cartItem.setQuantity(quantity);
+                    int currentQuantity = Integer.parseInt(cartItem.getQuantity());
+                    cartItem.setQuantity(String.valueOf(currentQuantity+(Integer.parseInt(quantity))));
                     cartRef.setValue(cartItem)
                             .addOnSuccessListener(aVoid -> callback.onSuccess("Updated your cart"))
                             .addOnFailureListener(e -> callback.onError(e.getMessage()));
