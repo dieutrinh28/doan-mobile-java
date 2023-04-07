@@ -44,4 +44,5 @@ dependencies {
     implementation 'me.zhanghai.android.materialratingbar:library:1.4.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+
 }
