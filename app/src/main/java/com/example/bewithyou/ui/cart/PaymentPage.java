@@ -3,6 +3,7 @@ package com.example.bewithyou.ui.cart;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -42,7 +43,15 @@ public class PaymentPage extends AppCompatActivity {
         order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(PaymentPage.this, RateStoreDialog.class));
+                /*RateStoreDialog rateStoreDialog = new RateStoreDialog(PaymentPage.this);
+                rateStoreDialog.getWindow().setBackgroundDrawable(new ColorDrawable(
+                        getResources().getColor(android.R.color.transparent)
+                ));
+                rateStoreDialog.setCancelable(false);
+                rateStoreDialog.show();*/
+
+                Intent intent = new Intent(PaymentPage.this, RateStoreDialog.class);
+                startActivity(intent);
             }
         });
 

@@ -330,4 +330,29 @@ public class getData {
         });
 
     }
+
+    public static void addNewReview(String userId, String rating, String comment, String date, String storeName) {
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("review").child(storeName);
+
+        databaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long count = dataSnapshot.getChildrenCount();
+                String reviewId = "review" + (count + 1);
+
+                DatabaseReference newReviewRef = databaseRef.child(reviewId);
+                newReviewRef.child("userId").setValue(userId);
+                newReviewRef.child("rating").setValue(rating);
+                newReviewRef.child("comment").setValue(comment);
+                newReviewRef.child("date").setValue(date);
+
+                Log.d("TAG", "New review saved with id: " + reviewId);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("TAG", "Database error: " + databaseError.getMessage());
+            }
+        });
+    }
 }

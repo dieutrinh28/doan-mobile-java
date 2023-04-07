@@ -69,7 +69,7 @@ public class HomePage extends AppCompatActivity {
         });
 
         viewPager = findViewById(R.id.viewPaper);
-        ViewpaperAdapter adapter = new ViewpaperAdapter(this);
+        ViewPaperAdapter adapter = new ViewPaperAdapter(this);
         viewPager.setAdapter(adapter);
 
         startAutoSlider();

@@ -1,7 +1,6 @@
 package com.example.bewithyou.model;
 
 public class Review {
-    private String storeName;
     private String comment;
     private String date;
     private String rating;
@@ -9,22 +8,13 @@ public class Review {
 
     public Review() {}
 
-    public Review(String storeName, String comment, String date, String rating, String userId) {
-        this.storeName = storeName;
+    public Review(String comment, String date, String rating, String userId) {
         this.comment = comment;
         this.date = date;
         this.rating = rating;
         this.userId = userId;
     }
 
-
-    public String getStoreName() {
-        return storeName;
-    }
-
-    public void setStoreName(String storeName) {
-        this.storeName = storeName;
-    }
 
     public String getComment() {
         return comment;
@@ -62,7 +52,6 @@ public class Review {
     @Override
     public String toString() {
         return "Review{" +
-                "storeName='" + storeName + '\'' +
                 ", comment='" + comment + '\'' +
                 ", date='" + date + '\'' +
                 ", rating='" + rating + '\'' +

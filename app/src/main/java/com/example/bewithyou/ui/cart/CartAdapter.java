@@ -47,7 +47,8 @@ public class CartAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return Long.parseLong(Cart_list.get(position).getProductName());
+        return 0;
+        /*return Long.parseLong(Cart_list.get(position).getProductName());*/
     }
 
     @Override
