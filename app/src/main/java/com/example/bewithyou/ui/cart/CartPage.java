@@ -62,8 +62,8 @@ public class CartPage extends AppCompatActivity {
                     sum+= Float.parseFloat(cart.getPrice()) * Float.parseFloat(cart.getQuantity());
                     quantity += Integer.parseInt(cart.getQuantity());
                 }
-                totalAmount.setText("Tổng thanh toán: "+String.valueOf(sum));
-                txtQuantity.setText("Số lượng: "+String.valueOf(quantity));
+                totalAmount.setText(String.valueOf(sum));
+                txtQuantity.setText(String.valueOf(quantity));
             }
 
             @Override

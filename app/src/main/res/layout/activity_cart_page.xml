@@ -1,55 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.cart.CartPage">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="16dp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:textColor="#FA275A"
+            android:layout_marginBottom="8dp"
+            android:text="Cart" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/gray"
+            android:layout_margin="5dp"/>
+
+    </LinearLayout>
 
     <GridView
         android:id="@+id/gridview"
         android:layout_width="match_parent"
-        android:layout_height="660dp"
-        android:horizontalSpacing="10dp"
-        android:numColumns="1"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="10dp" />
+        android:layout_height="wrap_content"
+        android:divider="@android:color/darker_gray"
+        android:isScrollContainer="false"
+        android:dividerHeight="1dp"/>
 
     <LinearLayout
-        android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_weight="1"
-        android:layout_gravity="bottom"
-        android:orientation="vertical"
-        android:background="#9FC6C6">
+        android:layout_margin="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tổng thanh toán:"
-            android:textSize="30dp"
-            android:id="@+id/totalAmount" />
+            android:layout_gravity="start"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Tổng thanh toán" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Số lượng" />
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Số lượng:"
-            android:textSize="25dp"
-            android:id="@+id/textView_quantity" />
+        </LinearLayout>
 
-
-        <Button
-            android:id="@+id/btnPayment"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Thanh toán ngay"
-            android:backgroundTint="#FA275A"
-            ></Button>
+            android:layout_gravity="end"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/totalAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="viewEnd"
+                android:textSize="20sp"
+                android:text="48.000 đ" />
+
+            <TextView
+                android:id="@+id/textView_quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="viewEnd"
+                android:textSize="20sp"
+                android:text="2" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btnPayment"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="16dp"
+        android:backgroundTint="#FA275A"
+        android:text="Thanh toán ngay" />
 
 
-</RelativeLayout>
+
+</LinearLayout>
