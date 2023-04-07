@@ -3,6 +3,7 @@ package com.example.bewithyou.ui.product;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.GridView;
@@ -24,12 +25,14 @@ public class ProductPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_page);
 
+        SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+        String storename = preferences.getString("storeName", "default_value");
 
         getData.init(getApplicationContext());
 
         gridView = findViewById(R.id.gridView);
 
-        getData.getProductsInStore("Starbucks",new Callback<List<Product>>() {
+        getData.getProductsInStore(storename,new Callback<List<Product>>() {
             @Override
             public void onSuccess(List<Product> data) {
                 ProductAdapter adapter = new ProductAdapter(data, getApplicationContext());

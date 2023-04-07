@@ -1,16 +1,22 @@
 package com.example.bewithyou.ui.home;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.bewithyou.R;
 import com.example.bewithyou.model.Store;
+import com.example.bewithyou.ui.product.ProductPage;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -64,6 +70,23 @@ public class StoreAdapter extends BaseAdapter {
         dataitem.tv_name.setText(store_list.get(position).getStoreName());
         dataitem.tv_description.setText(store_list.get(position).getStoreDescription());
         dataitem.ratingBar.setRating(Float.parseFloat(store_list.get(position).getRating()));
+        Store store_item = store_list.get(position);
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                SharedPreferences preferences = context.getSharedPreferences("MyPreferences", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                String em = store_item.getStoreName();
+                editor.putString("storeName", em);
+                editor.apply();
+
+                Intent intent = new Intent(view.getContext(), ProductPage.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
 
         return convertView;
     }

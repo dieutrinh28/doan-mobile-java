@@ -180,7 +180,7 @@ public class getData {
     public static void getProductsInStore(String storeName, Callback<List<Product>> callback) {
         final String TAG = "Data";
         Log.d(TAG, "Getting products from database");
-        DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference("Starbucks");
+        DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference(storeName);
         productsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
