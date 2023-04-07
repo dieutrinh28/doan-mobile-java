@@ -1,32 +1,20 @@
 package com.example.bewithyou.ui.review;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RatingBar;
-import android.widget.Toast;
 
-import com.example.bewithyou.Callback;
 import com.example.bewithyou.R;
-import com.example.bewithyou.SearchPage;
 import com.example.bewithyou.getData;
-import com.example.bewithyou.model.Review;
-import com.example.bewithyou.ui.cart.CartPage;
-import com.example.bewithyou.ui.cart.PaymentPage;
 import com.example.bewithyou.ui.home.HomePage;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import me.zhanghai.android.materialratingbar.MaterialRatingBar;
 
@@ -35,7 +23,7 @@ public class RateStoreDialog extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rate_store_dialog);
+        setContentView(R.layout.activity_rate_store_page);
 
         final Button btnLater = findViewById(R.id.btnLater);
         final Button btnRate = findViewById(R.id.btnRate);

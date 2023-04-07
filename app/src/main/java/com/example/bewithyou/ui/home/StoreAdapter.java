@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -42,7 +41,8 @@ public class StoreAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return Long.parseLong(store_list.get(position).getStoreName());
+        return 0;
+        /*return Long.parseLong(store_list.get(position).getStoreName());*/
     }
 
     @Override
@@ -51,7 +51,7 @@ public class StoreAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView == null) {
             dataitem = new MyView();
-            convertView = inflater.inflate(R.layout.activity_item_store, null);
+            convertView = inflater.inflate(R.layout.store_item, null);
 
             dataitem.iv_photo = convertView.findViewById(R.id.imgViewStore);
             dataitem.tv_name = convertView.findViewById(R.id.txtName);

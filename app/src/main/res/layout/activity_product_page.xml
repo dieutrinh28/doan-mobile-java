@@ -65,7 +65,8 @@
                 android:layout_height="1dp"
                 android:background="@color/gray"
                 android:layout_margin="5dp"/>
-            <TextView
+            <!--<TextView
+                android:id="@+id/etReviewStore"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="   Nhận xét và đánh giá"
@@ -74,7 +75,15 @@
                 android:drawableLeft="@drawable/ic_rate_star"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                />
+                />-->
+
+        <Button
+            android:id="@+id/btnReviewStore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhận xét và đánh giá"
+            android:drawableLeft="@drawable/ic_rate_star"
+            android:backgroundTint="@color/white" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
