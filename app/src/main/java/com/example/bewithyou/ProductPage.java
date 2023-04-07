@@ -12,7 +12,7 @@ import android.widget.GridView;
 
 import java.util.List;
 
-public class ProductPage extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class ProductPage extends AppCompatActivity {
 
     GridView gridView;
 
@@ -31,10 +31,7 @@ public class ProductPage extends AppCompatActivity implements AdapterView.OnItem
             public void onSuccess(List<Product> data) {
                 ProductAdapter adapter = new ProductAdapter(data, getApplicationContext());
                 gridView.setAdapter(adapter);
-                for (Product pro: data
-                     ) {
-                    System.out.print(pro.toString());
-                }
+
                 Log.d("TAG", "onSuccess: ");
             }
 
@@ -43,14 +40,6 @@ public class ProductPage extends AppCompatActivity implements AdapterView.OnItem
 
             }
         });
-        gridView.setOnItemClickListener(this);
 
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(getApplicationContext(), DetailProductActivity.class);
-        intent.putExtra("id", gridView.getAdapter().getItemId(position));
-        startActivity(intent);
     }
 }

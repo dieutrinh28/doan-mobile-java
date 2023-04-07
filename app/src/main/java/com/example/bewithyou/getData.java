@@ -59,7 +59,7 @@ public class getData {
     public static void getSpecificProduct(String storeName, String name, Callback<Product> callback) {
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(storeName);
 
-        Query query = databaseRef.orderByChild("name").equalTo(name);
+        Query query = databaseRef.orderByChild("productName").equalTo(name);
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

@@ -1,6 +1,7 @@
 package com.example.bewithyou;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,6 +63,15 @@ public class ProductAdapter extends BaseAdapter {
         dataitem.tv_price.setText(product_list.get(position).getPrice());
         dataitem.tv_description.setText(product_list.get(position).getShort_description(product_list.get(position).getProductDescription()));
 
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), DetailProductActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("product_name",product_list.get(position).getProductName());
+                context.startActivity(intent);
+            }
+        });
         return convertView;
     }
 
