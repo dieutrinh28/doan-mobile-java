@@ -33,14 +33,16 @@ public class SplashPage extends AppCompatActivity {
 
     private void nextActivity() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) {
-            Intent intent = new Intent(this, LoginPage.class);
-            startActivity(intent);
-        }
-        else {
-            Intent intent = new Intent(this, HomePage.class);
-            startActivity(intent);
-        }
+        Intent intent = new Intent(this, LoginPage.class);
+          startActivity(intent);
+//        if (user == null) {
+//            Intent intent = new Intent(this, LoginPage.class);
+//            startActivity(intent);
+//        }
+//        else {
+//            Intent intent = new Intent(this, HomePage.class);
+//            startActivity(intent);
+//        }
         finish();
     }
 }

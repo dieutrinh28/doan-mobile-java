@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bewithyou.R;
+import com.example.bewithyou.SearchPage;
 import com.example.bewithyou.ui.cart.CartPage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -65,7 +66,7 @@ public class LoginPage extends AppCompatActivity {
                 String em = email.replace("@gmail.com","");
                 editor.putString("username", em);
                 editor.apply();
-                startActivity(new Intent(LoginPage.this , CartPage.class));
+                startActivity(new Intent(LoginPage.this , SearchPage.class));
                 finish();
             }
         });

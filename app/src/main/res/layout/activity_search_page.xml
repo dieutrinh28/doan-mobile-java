@@ -1,76 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SearchPage">
+    android:orientation="vertical"
 
-    <SearchView
-        android:id="@+id/search_bar"
-        android:layout_width="361dp"
-        android:layout_height="65dp"
-        android:layout_margin="10dp"
-        android:padding="8dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:queryHint="Search"
-        app:iconifiedByDefault="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.68"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024" />
-
-    <EditText
-        android:id="@+id/search"
-        android:layout_width="262dp"
-        android:layout_height="71dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginBottom="440dp"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"></EditText>
-
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="0dp"
-        android:layout_height="34dp"
-        android:layout_marginBottom="292dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        android:background="#C6A8A8"
-        app:layout_constraintStart_toStartOf="parent"></TextView>
-
-    <Button
-        android:id="@+id/buttonSearch"
-        android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
-        android:layout_marginBottom="356dp"
-        android:text="Search"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints">
+        android:orientation="vertical"
+        android:background="@drawable/rounded_corner"
+        >
 
-    </Button>
+        <ImageView
+            android:id="@+id/profile_picture"
+            android:layout_width="144dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:layout_gravity="center"
+            android:src="@drawable/round_back_while_stroke" />
 
-    <RatingBar
-        android:id="@+id/ratingBar"
-        android:layout_width="252dp"
-        android:layout_height="59dp"
-        android:layout_marginBottom="144dp"
-        android:numStars="5"
-        android:rating="0"
-        android:stepSize="1"
-        android:scaleX="0.5"
-        android:scaleY="0.5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.38"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/username_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profile_picture"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:textSize="30dp"
+            android:layout_centerHorizontal="true"
+            android:text="Username" />
+        <TextView
+            android:id="@+id/phone_num_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="12dp"
+            android:layout_gravity="center"
+            android:textSize="15dp"
+            android:text="Phone Number" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="16dp">
+
+            <Button
+                android:id="@+id/btnDeliveryAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="dddddddddddd"
+                android:textSize="13dp"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+
+                android:drawableRight="@drawable/ic_arrow"
+                android:drawableLeft="@drawable/ic_ship"
+                android:backgroundTint="@color/white" />
+
+            <Button
+                android:id="@+id/btnLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Location"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_location"
+                android:drawableRight="@drawable/ic_arrow"
+                android:backgroundTint="@color/white" />
+
+            <Button
+                android:id="@+id/btnPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Payment method"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_personal"
+                android:drawableRight="@drawable/ic_arrow"
+                android:backgroundTint="@color/white" />
+            <Button
+                android:id="@+id/btnCartInprfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Cart"
+                android:drawableLeft="@drawable/ic_cart"
+                android:drawableRight="@drawable/ic_arrow"
+                android:backgroundTint="@color/white" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</LinearLayout>

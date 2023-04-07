@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import com.example.bewithyou.model.Cart;
 import com.example.bewithyou.model.Product;
 import com.example.bewithyou.model.Review;
+import com.example.bewithyou.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -272,6 +273,29 @@ public class getData {
             public void onCancelled(DatabaseError databaseError) {
                 Log.e(TAG, "Error retrieving products from database: " + databaseError.getMessage());
                 callback.onError(databaseError.getMessage());
+            }
+        });
+    }
+    public static void getUser(String userName,Callback<User> callback) {
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("users");
+
+        Query query = databaseRef.orderByChild("userName").equalTo(userName);
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    DataSnapshot firstChild = snapshot.getChildren().iterator().next();
+                    User user = firstChild.getValue(User.class);
+                    callback.onSuccess(user);
+                } else {
+                    callback.onError("No User found!");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                callback.onError(error.getMessage());
             }
         });
     }
