@@ -9,12 +9,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
 
 import com.example.bewithyou.Callback;
 import com.example.bewithyou.R;
+import com.example.bewithyou.SearchPage;
 import com.example.bewithyou.getData;
 import com.example.bewithyou.model.Store;
 import com.example.bewithyou.ui.cart.CartPage;
@@ -27,6 +29,7 @@ public class HomePage extends AppCompatActivity {
     private ImageButton imageButtonCart;
 
     GridView gridViewStore;
+    ImageButton btnUser;
 
     private ViewPager viewPager;
     private int[] images = {R.drawable.img1_viewpaper, R.drawable.img2_viewpaper, R.drawable.img3_viewpaper, R.drawable.img4_viewpaper};
@@ -37,12 +40,21 @@ public class HomePage extends AppCompatActivity {
     private final long PERIOD_MS = 3000; //đặt khoảng thời gian chuyển trang
 
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
+        ImageButton backButton = findViewById(R.id.back_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        btnUser =findViewById(R.id.btnPerson);
         imageButtonCart = findViewById(R.id.btnCart);
         imageButtonCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,8 +81,14 @@ public class HomePage extends AppCompatActivity {
         });
 
         viewPager = findViewById(R.id.viewPaper);
-        ViewpaperAdapter adapter = new ViewpaperAdapter(this);
+        ViewPaperAdapter adapter = new ViewPaperAdapter(this);
         viewPager.setAdapter(adapter);
+        btnUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomePage.this , SearchPage.class));
+            }
+        });
 
         startAutoSlider();
     }

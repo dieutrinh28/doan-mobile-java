@@ -38,6 +38,7 @@ public class LoginPage extends AppCompatActivity {
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         login = findViewById(R.id.login);
+        registerUser = findViewById(R.id.register_user);
 
         Auth = FirebaseAuth.getInstance();
 
@@ -48,11 +49,13 @@ public class LoginPage extends AppCompatActivity {
                 String txt_password = password.getText().toString();
                 loginUser(txt_email,txt_password);
 
-//                if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)) {
-//                    Toast.makeText(LoginActivity.this, "Empty Credentials!", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    loginUser(txt_email, txt_password);
-//                }
+
+            }
+        });
+        registerUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginPage.this , RegisterPage.class));
             }
         });
     }

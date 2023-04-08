@@ -27,7 +27,7 @@ public class SplashPage extends AppCompatActivity {
             public void run() {
                 nextActivity();
             }
-        }, 5000);
+        }, 1000);
 
     }
 

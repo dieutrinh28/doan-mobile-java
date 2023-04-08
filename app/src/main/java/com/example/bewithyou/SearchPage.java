@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -30,6 +31,13 @@ public class SearchPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_page);
 
+        ImageButton backButton = findViewById(R.id.back_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         userName =findViewById(R.id.username_text);
         phoneNum=findViewById(R.id.phone_num_text);
         address =findViewById(R.id.btnDeliveryAddress);
@@ -52,28 +60,6 @@ public class SearchPage extends AppCompatActivity {
             }
         });
 
-        //RatingBar ratingBar = findViewById(R.id.ratingBar);
-
-//        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-//            @Override
-//            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-//                // Handle the rating change here
-//                int myRating = (int) rating;
-//
-//                        getData.updateStoreRating("Orchid Oasis", "Chili", String.valueOf(myRating), new Callback<Boolean>() {
-//                            @Override
-//                            public void onSuccess(Boolean data) {
-//                                Toast.makeText(SearchPage.this,myRating+" sao ne",Toast.LENGTH_SHORT).show();
-//                            }
-//
-//                            @Override
-//                            public void onError(String errorMessage) {
-//
-//                            }
-//                        });
-//
-//
-//            }
 
 
     }

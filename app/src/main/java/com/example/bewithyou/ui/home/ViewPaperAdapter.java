@@ -12,12 +12,12 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.example.bewithyou.R;
 
-public class ViewpaperAdapter extends PagerAdapter {
+public class ViewPaperAdapter extends PagerAdapter {
     private Context context;
     private LayoutInflater layoutInflater;
     private int[] images = {R.drawable.img1_viewpaper, R.drawable.img2_viewpaper, R.drawable.img3_viewpaper, R.drawable.img4_viewpaper};
 
-    public ViewpaperAdapter(Context context){
+    public ViewPaperAdapter(Context context){
         this.context = context;
     }
 

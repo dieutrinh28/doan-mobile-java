@@ -5,6 +5,7 @@
     android:viewportHeight="24"
     android:tint="#FA275A"
     android:alpha="0.6">
+
   <group android:scaleX="1.2"
       android:scaleY="1.2"
       android:translateX="-2.4"

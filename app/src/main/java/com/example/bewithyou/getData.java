@@ -65,7 +65,7 @@ public class getData {
     public static void getSpecificProduct(String storeName, String name, Callback<Product> callback) {
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(storeName);
 
-        Query query = databaseRef.orderByChild("name").equalTo(name);
+        Query query = databaseRef.orderByChild("productName").equalTo(name);
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -182,7 +182,7 @@ public class getData {
     public static void getProductsInStore(String storeName, Callback<List<Product>> callback) {
         final String TAG = "Data";
         Log.d(TAG, "Getting products from database");
-        DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference("Starbucks");
+        DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference(storeName);
         productsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -233,7 +233,8 @@ public class getData {
                 if (snapshot.exists()) {
                     // Product already exists in cart, update the quantity
                     Cart cartItem = snapshot.getValue(Cart.class);
-                    cartItem.setQuantity(quantity);
+                    int currentQuantity = Integer.parseInt(cartItem.getQuantity());
+                    cartItem.setQuantity(String.valueOf(currentQuantity+(Integer.parseInt(quantity))));
                     cartRef.setValue(cartItem)
                             .addOnSuccessListener(aVoid -> callback.onSuccess("Updated your cart"))
                             .addOnFailureListener(e -> callback.onError(e.getMessage()));
@@ -326,9 +327,7 @@ public class getData {
         });
     }
 
-    public static void getReviewData(Callback<List<Review>> listCallback) {
-        SharedPreferences preferences = context.getSharedPreferences("MyPreferences", MODE_PRIVATE);
-        String storeName = preferences.getString("storeName", "Starbucks");
+    public static void getReviewData(Callback<List<Review>> listCallback, String storeName) {
 
         final String TAG = "Data";
         Log.d(TAG, "Getting reviews from database");
@@ -354,5 +353,30 @@ public class getData {
             }
         });
 
+    }
+
+    public static void addNewReview(String userId, String rating, String comment, String date, String storeName) {
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("review").child(storeName);
+
+        databaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long count = dataSnapshot.getChildrenCount();
+                String reviewId = "review" + (count + 1);
+
+                DatabaseReference newReviewRef = databaseRef.child(reviewId);
+                newReviewRef.child("userId").setValue(userId);
+                newReviewRef.child("rating").setValue(rating);
+                newReviewRef.child("comment").setValue(comment);
+                newReviewRef.child("date").setValue(date);
+
+                Log.d("TAG", "New review saved with id: " + reviewId);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("TAG", "Database error: " + databaseError.getMessage());
+            }
+        });
     }
 }

@@ -5,18 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
+    tools:context=".ui.home.HomePage"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:text="Menu tới ngay"
-        android:textSize="22dp"
-        android:textStyle="bold"/>
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="130dp"
+            android:text="Menu tới ngay"
+            android:textSize="22dp"
+            android:textStyle="bold"/>
+
+        <ImageButton
+            android:id="@+id/btnPerson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:contentDescription="Person"
+            android:minHeight="50dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_personal" />
+
+        <ImageButton
+            android:id="@+id/btnCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:contentDescription="Cart"
+            android:minHeight="50dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_cart" />
+
+    </LinearLayout>
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
@@ -26,10 +55,11 @@
         android:queryHint="Tìm kiếm cửa hàng"
         android:hint="Tìm kiếm cửa hàng"
         android:iconifiedByDefault="true"
-        android:background="@drawable/rounded_corner1"
+        android:background="@drawable/searchview_border"
         android:layout_marginBottom="20dp">
 
     </androidx.appcompat.widget.SearchView>
+    <include layout="@layout/navigation_bar" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPaper"
@@ -46,14 +76,6 @@
         android:textSize="18dp"
         android:textStyle="bold"/>
 
-    <ImageButton
-        android:id="@+id/btnCart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:contentDescription="Cart"
-        android:minHeight="48dp"
-        android:src="@drawable/ic_cart" />
     <GridView
         android:id="@+id/gridViewStore"
         android:layout_width="match_parent"

@@ -15,6 +15,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import me.zhanghai.android.materialratingbar.MaterialRatingBar;
+
 public class ReviewAdapter extends BaseAdapter {
 
     private List<Review> reviewList;
@@ -38,7 +40,8 @@ public class ReviewAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {
-        return Long.parseLong(reviewList.get(i).getComment());
+        return 0;
+        /*return Long.parseLong(reviewList.get(i).getComment());*/
     }
 
     @Override
@@ -50,7 +53,7 @@ public class ReviewAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.review_item, null);
             dataItem.avatarUser = view.findViewById(R.id.imgUser);
             dataItem.nameUser = view.findViewById(R.id.txtUsername);
-            dataItem.rating = view.findViewById(R.id.ratingBar);
+            dataItem.rating = view.findViewById(R.id.ratingBarShow);
             dataItem.date = view.findViewById(R.id.txtDate);
             dataItem.comment = view.findViewById(R.id.txtComment);
             view.setTag(dataItem);
@@ -61,7 +64,6 @@ public class ReviewAdapter extends BaseAdapter {
 
         /* lấy avatar user và name user từ id user*/
         /*Picasso.get().load(reviewList.get(i).)*/
-        /*dataItem.nameUser.setText(reviewList.get(i).);*/
 
         dataItem.nameUser.setText(reviewList.get(i).getUserId());
         dataItem.date.setText(reviewList.get(i).getDate());
