@@ -302,9 +302,7 @@ public class getData {
         });
     }
 
-    public static void getReviewData(Callback<List<Review>> listCallback) {
-        SharedPreferences preferences = context.getSharedPreferences("MyPreferences", MODE_PRIVATE);
-        String storeName = preferences.getString("storeName", "Starbucks");
+    public static void getReviewData(Callback<List<Review>> listCallback, String storeName) {
 
         final String TAG = "Data";
         Log.d(TAG, "Getting reviews from database");
