@@ -2,6 +2,7 @@ package com.example.bewithyou;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +26,9 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_product);
+
+        SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+        String storeName = preferences.getString("storeName", "default_value");
 //
         btnAddtoCart = findViewById(R.id.btn_addtocart);
         btnPlus = findViewById(R.id.btn_plus);
@@ -44,11 +48,9 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
 
         product_name = (String) getIntent().getStringExtra("product_name");
         tvProductName.setText(product_name);
-        getData.getSpecificProduct("Starbucks", product_name, new Callback<Product>() {
+        getData.getSpecificProduct(storeName, product_name, new Callback<Product>() {
             @Override
             public void onSuccess(Product data) {
-                System.out.println("here");
-                System.out.print(data.toString());
                 Picasso.get().load(data.getProductImg()).into(imvProDuct);
                 tvProductPrice.setText(data.getPrice());
                 tvProductDescription.setText(data.getProductDescription());
