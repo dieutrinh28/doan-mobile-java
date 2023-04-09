@@ -46,7 +46,7 @@ public class ProductPage extends AppCompatActivity {
         getData.init(getApplicationContext());
 
         imvStore = findViewById(R.id.imv_store);
-        tvStoreDescription = findViewById(R.id.tv_store_name);
+        tvStoreDescription = findViewById(R.id.tv_store_description);
         tvStoreAddess = findViewById(R.id.tv_store_address);
         tvStoreName = findViewById(R.id.tv_store_name);
 
@@ -59,7 +59,7 @@ public class ProductPage extends AppCompatActivity {
                 Picasso.get().load(data.getStoreImg()).into(imvStore);
                 tvStoreDescription.setText(data.getStoreDescription());
                 tvStoreName.setText(data.getStoreName());
-                tvStoreAddess.setText("THAY ĐỔI CHỖ NÀY NHE");
+                tvStoreAddess.setText(data.getStoreAddress());
             }
 
             @Override

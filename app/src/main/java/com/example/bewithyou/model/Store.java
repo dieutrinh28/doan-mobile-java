@@ -5,14 +5,16 @@ public class Store {
     private String storeDescription;
     private String rating;
     private String storeImg;
+    private String storeAddress;
 
     public Store(){};
 
-    public Store(String storeName, String storeDescription, String rating, String storeImg) {
+    public Store(String storeName, String storeDescription, String rating, String storeImg, String storeAddress) {
         this.storeName = storeName;
         this.storeDescription = storeDescription;
         this.rating = rating;
         this.storeImg = storeImg;
+        this.storeAddress = storeAddress;
     }
 
     public String getStoreName() {
@@ -54,5 +56,13 @@ public class Store {
                 ", description='" + storeDescription + '\'' +
                 ", rating='" + rating + '\'' +
                 ", img='" + storeImg + '\'' + '}';
+    }
+
+    public String getStoreAddress() {
+        return storeAddress;
+    }
+
+    public void setStoreAddress(String storeAddress) {
+        this.storeAddress = storeAddress;
     }
 }
