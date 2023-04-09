@@ -1,6 +1,7 @@
 package com.example.bewithyou.ui.home;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
@@ -25,7 +26,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class HomePage extends AppCompatActivity {
+public class HomePage extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private ImageButton imageButtonCart;
 
     GridView gridViewStore;
@@ -35,6 +36,7 @@ public class HomePage extends AppCompatActivity {
     private int[] images = {R.drawable.img1_viewpaper, R.drawable.img2_viewpaper, R.drawable.img3_viewpaper, R.drawable.img4_viewpaper};
 
     private int currentPage = 0;
+    private SearchView searchView;
     private Timer timer;
     private final long DELAY_MS = 500; //đặt khoảng thời gian delay cho mỗi lần chuyển trang
     private final long PERIOD_MS = 3000; //đặt khoảng thời gian chuyển trang
@@ -53,6 +55,9 @@ public class HomePage extends AppCompatActivity {
                 onBackPressed();
             }
         });
+        searchView = findViewById(R.id.search_view);
+        searchView.setOnQueryTextListener(this);
+
 
         btnUser =findViewById(R.id.btnPerson);
         imageButtonCart = findViewById(R.id.btnCart);
@@ -91,6 +96,37 @@ public class HomePage extends AppCompatActivity {
         });
 
         startAutoSlider();
+    }
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        // Perform search when user submits query
+        viewPager.setVisibility(View.GONE);
+        search(query);
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        // Perform search as user types
+        viewPager.setVisibility(View.GONE);
+        search(newText);
+        return false;
+    }
+
+    private void search(String query) {
+        getData.searchStore(query, new Callback<List<Store>>() {
+            @Override
+            public void onSuccess(List<Store> data) {
+                StoreAdapter adapter = new StoreAdapter(data, getApplicationContext());
+                gridViewStore.setAdapter(adapter);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+
+            }
+        });
+        // Search logic here
     }
     private void startAutoSlider() {
         final Handler handler = new Handler();

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -103,6 +104,10 @@ public class RegisterPage extends AppCompatActivity {
                         // User registration successful
                         FirebaseUser user = mAuth.getCurrentUser();
                         String em = email.replace("@gmail.com","");
+                        SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putString("username", em);
+                        editor.apply();
                         saveUserData(em, email, phoneNum, address, username);
                     } else {
                         // User registration failed

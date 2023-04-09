@@ -85,6 +85,32 @@ public class getData {
             }
         });
     }
+    public static void searchStore(String storeName, Callback<List<Store>> callback) {
+        final String TAG = "Data";
+        Log.d(TAG, "Searching for stores in database");
+
+        DatabaseReference storesRef = FirebaseDatabase.getInstance().getReference("stores");
+        storesRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<Store> storeList = new ArrayList<>();
+                for (DataSnapshot storeSnapshot : snapshot.getChildren()) {
+                    Store store = storeSnapshot.getValue(Store.class);
+                    if (store.getStoreName().toLowerCase().contains(storeName.toLowerCase())) {
+                        storeList.add(store);
+                    }
+                }
+                callback.onSuccess(storeList);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e(TAG, "Error retrieving stores from database: " + error.getMessage());
+                callback.onError(error.getMessage());
+            }
+        });
+    }
+
 
     public static void updateProductProperty(String storeName ,String productId, String property, Object value, final Callback<Boolean> callback) {
         DatabaseReference productRef = FirebaseDatabase.getInstance().getReference().child(storeName).child(productId);
@@ -183,6 +209,7 @@ public class getData {
         final String TAG = "Data";
         Log.d(TAG, "Getting products from database");
         DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference(storeName);
+        System.out.println(storeName);
         productsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
