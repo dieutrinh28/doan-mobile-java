@@ -12,13 +12,16 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.bewithyou.Callback;
 import com.example.bewithyou.R;
 import com.example.bewithyou.getData;
 import com.example.bewithyou.model.Product;
+import com.example.bewithyou.model.Store;
 import com.example.bewithyou.ui.review.ReviewPage;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -26,6 +29,9 @@ public class ProductPage extends AppCompatActivity {
 
     GridView gridView;
     Button btnReviewStore;
+
+    ImageView imvStore;
+    TextView tvStoreName, tvStoreDescription, tvStoreAddess;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -39,9 +45,27 @@ public class ProductPage extends AppCompatActivity {
 
         getData.init(getApplicationContext());
 
+        imvStore = findViewById(R.id.imv_store);
+        tvStoreDescription = findViewById(R.id.tv_store_description);
+        tvStoreAddess = findViewById(R.id.tv_store_address);
+        tvStoreName = findViewById(R.id.tv_store_name);
+
         gridView = findViewById(R.id.product_display_gridview);
         btnReviewStore = findViewById(R.id.btnReviewStore);
 
+        getData.getSpecificStore(storeName, new Callback<Store>() {
+            @Override
+            public void onSuccess(Store data) {
+                Picasso.get().load(data.getStoreImg()).into(imvStore);
+                tvStoreDescription.setText(data.getStoreDescription());
+                tvStoreName.setText(data.getStoreName());
+                tvStoreAddess.setText(data.getStoreAddress());
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+            }
+        });
 
         getData.getProductsInStore(storeName, new Callback<List<Product>>() {
             @Override
@@ -65,8 +89,5 @@ public class ProductPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
     }
 }

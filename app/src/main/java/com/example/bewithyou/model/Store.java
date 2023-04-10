@@ -50,11 +50,11 @@ public class Store {
     }
 
     public String getStoreAddress() {
-        return storeImg;
+        return storeAddress;
     }
 
-    public void setStoreAddress(String storeImg) {
-        this.storeImg = storeImg;
+    public void setStoreAddress(String storeAddress) {
+        this.storeAddress = storeAddress;
     }
 
 
