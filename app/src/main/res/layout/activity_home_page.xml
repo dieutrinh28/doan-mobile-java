@@ -12,8 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,13 +54,13 @@
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="370dp"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
         android:layout_gravity="center"
         android:queryHint="Tìm kiếm cửa hàng"
         android:hint="Tìm kiếm cửa hàng"
         android:iconifiedByDefault="true"
         android:background="@drawable/searchview_border"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="10dp">
 
     </androidx.appcompat.widget.SearchView>
 
@@ -79,7 +78,8 @@
         android:layout_height="wrap_content"
         android:text="Hôm nay ăn gì?"
         android:textSize="18dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
 
     <GridView
         android:id="@+id/gridViewStore"

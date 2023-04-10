@@ -24,7 +24,7 @@
             android:name=".ui.cart.PaymentPage"
             android:exported="false" />
         <activity
-            android:name=".DetailProductActivity"
+            android:name=".ui.detailProduct.DetailProductPage"
             android:exported="false" />
         <activity
             android:name=".ui.cart.CartPage"
