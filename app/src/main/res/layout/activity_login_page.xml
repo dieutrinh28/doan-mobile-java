@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.auth.RegisterPage">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="Email"
+        android:padding="10dp"
+        android:background="@drawable/textview_border"
+        android:id="@+id/email"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="Password"
+        android:padding="10dp"
+        android:background="@drawable/textview_border"
+        android:id="@+id/password"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="15sp"
+        android:text="LOGIN"
+        android:textSize="11dp"
+        android:padding="7dp"
+        android:background="@drawable/textview_border"
+        android:id="@+id/login"/>
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:text="Don't have an account? Register"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:textColor="#3C31DD"
+        android:id="@+id/register_user"/>
+
+</LinearLayout>
