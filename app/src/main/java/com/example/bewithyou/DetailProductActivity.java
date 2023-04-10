@@ -8,14 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.bewithyou.model.Product;
-import com.example.bewithyou.ui.auth.LoginPage;
 import com.example.bewithyou.ui.cart.CartPage;
-import com.example.bewithyou.ui.home.HomePage;
 import com.squareup.picasso.Picasso;
 
 public class DetailProductActivity extends AppCompatActivity implements View.OnClickListener {
@@ -30,7 +26,7 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_product);
-//
+
         btnAddtoCart = findViewById(R.id.btn_addtocart);
         btnPlus = findViewById(R.id.btn_plus);
         btnMinus = findViewById(R.id.btn_minus);
@@ -49,17 +45,14 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
 
         product_name = (String) getIntent().getStringExtra("product_name");
         tvProductName.setText(product_name);
+
         SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
         String storeName = preferences.getString("storeName", "default_value");
-
         String username = preferences.getString("username", "default_value");
-
-
 
         getData.getSpecificProduct(storeName, product_name, new Callback<Product>() {
             @Override
             public void onSuccess(Product data) {
-
                 Picasso.get().load(data.getProductImg()).into(imvProDuct);
                 tvProductPrice.setText(data.getPrice());
                 tvProductDescription.setText(data.getProductDescription());

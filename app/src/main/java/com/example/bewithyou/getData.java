@@ -354,6 +354,27 @@ public class getData {
         });
     }
 
+    public static void getSpecificStore(String storeName, Callback<Store> callback) {
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("stores").child(storeName);
+
+        databaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    Store store = snapshot.getValue(Store.class);
+                    callback.onSuccess(store);
+                } else {
+                    callback.onError("No product found!");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                callback.onError(error.getMessage());
+            }
+        });
+    }
+
     public static void getReviewData(Callback<List<Review>> listCallback, String storeName) {
 
         final String TAG = "Data";
