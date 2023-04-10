@@ -60,21 +60,41 @@ public class LoginPage extends AppCompatActivity {
         });
     }
 
-    private void loginUser(String email, String password) {
-        Auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                Toast.makeText(LoginPage.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                String em = email.replace("@gmail.com","");
-                editor.putString("username", em);
-                editor.apply();
-                startActivity(new Intent(LoginPage.this , HomePage.class));
-                finish();
-            }
-        });
-    }
+//    private void loginUser(String email, String password) {
+//        Auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//            @Override
+//            public void onComplete(@NonNull Task<AuthResult> task) {
+//                Toast.makeText(LoginPage.this, "Login Successful", Toast.LENGTH_SHORT).show();
+//                SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+//                SharedPreferences.Editor editor = preferences.edit();
+//                String em = email.replace("@gmail.com","");
+//                editor.putString("username", em);
+//                editor.apply();
+//                startActivity(new Intent(LoginPage.this , HomePage.class));
+//                finish();
+//            }
+//        });
+//    }
 
+    private void loginUser(String email, String password) {
+        Auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(LoginPage.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                            SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            String em = email.replace("@gmail.com","");
+                            editor.putString("username", em);
+                            editor.apply();
+                            startActivity(new Intent(LoginPage.this , HomePage.class));
+                            finish();
+                        } else {
+                            Toast.makeText(LoginPage.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
 
 }
