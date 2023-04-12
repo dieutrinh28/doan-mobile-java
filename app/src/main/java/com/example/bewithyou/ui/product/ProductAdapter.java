@@ -10,7 +10,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.bewithyou.DetailProductActivity;
+import com.example.bewithyou.ui.cart.CartPage;
+import com.example.bewithyou.ui.detailProduct.DetailProductActivity;
 import com.example.bewithyou.R;
 import com.example.bewithyou.model.Product;
 import com.squareup.picasso.Picasso;

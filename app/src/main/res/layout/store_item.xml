@@ -32,18 +32,20 @@
             android:layout_height="40dp"
             android:text="Description Name"/>
 
-        <androidx.appcompat.widget.AppCompatRatingBar
+        <me.zhanghai.android.materialratingbar.MaterialRatingBar
             android:id="@+id/ratingBar"
-            style="@style/Widget.AppCompat.RatingBar.Indicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:numStars="5"
-            android:rating="0"
-            android:scaleX="0.5"
-            android:scaleY="0.5"
-            android:stepSize="1"
             android:layout_gravity="right"
-            android:progressTint="#FA275A"/>
+            android:isIndicator="true"
+            android:maxHeight="20dp"
+            android:minHeight="20dp"
+            android:numStars="5"
+            android:stepSize="1"
+            android:rating="0"
+            android:progressTint="#FA275A"
+            android:contentDescription="Rating Stars"
+            android:layout_marginTop="20dp"/>
     </LinearLayout>
 
 
