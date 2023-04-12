@@ -52,7 +52,7 @@
     <TextView
         android:layout_width="300dp"
         android:layout_height="30dp"
-        android:text="Don't have an account? Register"
+        android:text="Bạn chưa có tài khoản? Đăng ký ngay"
         android:gravity="center"
         android:layout_marginTop="15dp"
         android:textColor="#0080FF"
