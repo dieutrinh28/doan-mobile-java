@@ -64,7 +64,7 @@ public class ProductAdapter extends BaseAdapter {
         Picasso.get().load(product_list.get(position).getProductImg()).into(dataitem.iv_photo);
         dataitem.tv_name.setText(product_list.get(position).getProductName());
         dataitem.tv_price.setText(product_list.get(position).getPrice());
-        dataitem.tv_description.setText(product_list.get(position).getShort_description(product_list.get(position).getProductDescription()));
+        dataitem.tv_description.setText((product_list.get(position).getProductDescription()));
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

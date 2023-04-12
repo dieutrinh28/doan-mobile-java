@@ -12,7 +12,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,19 +46,13 @@
             android:src="@drawable/ic_cart" />
 
     </LinearLayout>
-
     <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
-        android:layout_width="370dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:queryHint="Tìm kiếm cửa hàng"
-        android:hint="Tìm kiếm cửa hàng"
-        android:iconifiedByDefault="true"
-        android:background="@drawable/searchview_border"
-        android:layout_marginBottom="20dp">
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-    </androidx.appcompat.widget.SearchView>
+
+    <include layout="@layout/navigation_bar" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPaper"

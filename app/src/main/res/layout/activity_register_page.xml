@@ -17,6 +17,7 @@
         android:background="@drawable/textview_border"
         android:id="@+id/email"/>
 
+
     <EditText
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -28,63 +29,26 @@
 
 
 
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="Address"
+        android:padding="10dp"
+        android:background="@drawable/textview_border"
+        android:id="@+id/address"/>
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="Phone Number"
+        android:padding="10dp"
+        android:background="@drawable/textview_border"
+        android:id="@+id/phone"/>
 
-<!--        <ImageView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:src="@drawable/logo"/>-->
 
-        <EditText
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/textview_border"
-            android:layout_marginTop="15dp"
-            android:hint="Username"
-            android:padding="10dp"
-            android:id="@+id/username"/>
 
-    <!--    <EditText-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:background="@drawable/edit_text_background"-->
-    <!--        android:layout_marginTop="15dp"-->
-    <!--        android:hint="Name"-->
-    <!--        android:padding="10dp"-->
-    <!--        android:id="@+id/name"/>-->
 
-    <!--    <EditText-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:background="@drawable/edit_text_background"-->
-    <!--        android:layout_marginTop="15dp"-->
-    <!--        android:hint="Email"-->
-    <!--        android:padding="10dp"-->
-    <!--        android:id="@+id/email"/>-->
-
-    <!--    <EditText-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:background="@drawable/edit_text_background"-->
-    <!--        android:layout_marginTop="15dp"-->
-    <!--        android:hint="Password"-->
-    <!--        android:padding="10dp"-->
-    <!--        android:id="@+id/password"/>-->
-
-    <!--    <Button-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:background="@drawable/button_background"-->
-    <!--        android:layout_marginTop="15sp"-->
-    <!--        android:text="REGISTER"-->
-    <!--        android:padding="10dp"-->
-    <!--        android:id="@+id/register"/>-->
-
-    <!--    <TextView-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="Already a user? LogIn"-->
-    <!--        android:layout_marginTop="15dp"-->
-    <!--        android:id="@+id/login_user"/>-->
     <Button
         android:layout_width="300dp"
         android:layout_height="wrap_content"

@@ -2,16 +2,16 @@ package com.example.bewithyou;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.bewithyou.model.Product;
+import com.example.bewithyou.ui.cart.CartPage;
 import com.squareup.picasso.Picasso;
 
 public class DetailProductActivity extends AppCompatActivity implements View.OnClickListener {
@@ -27,9 +27,6 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_product);
 
-        SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
-        String storeName = preferences.getString("storeName", "default_value");
-//
         btnAddtoCart = findViewById(R.id.btn_addtocart);
         btnPlus = findViewById(R.id.btn_plus);
         btnMinus = findViewById(R.id.btn_minus);
@@ -48,6 +45,11 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
 
         product_name = (String) getIntent().getStringExtra("product_name");
         tvProductName.setText(product_name);
+
+        SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+        String storeName = preferences.getString("storeName", "default_value");
+        String username = preferences.getString("username", "default_value");
+
         getData.getSpecificProduct(storeName, product_name, new Callback<Product>() {
             @Override
             public void onSuccess(Product data) {
@@ -57,10 +59,10 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
                 btnAddtoCart.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        getData.addToCart(data.getProductName(), data.getPrice(), tvQuantity.getText().toString(), data.getProductImg(), data.getProductName(), "phuonganh", new Callback<String>() {
+                        getData.addToCart(data.getProductName(), data.getPrice(), tvQuantity.getText().toString(), data.getProductImg(), data.getProductName(), username, new Callback<String>() {
                             @Override
                             public void onSuccess(String data) {
-                                System.out.print(data.toString());
+                                startActivity(new Intent(DetailProductActivity.this , CartPage.class));
                             }
 
                             @Override

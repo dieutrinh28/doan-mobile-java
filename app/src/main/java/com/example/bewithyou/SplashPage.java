@@ -27,20 +27,22 @@ public class SplashPage extends AppCompatActivity {
             public void run() {
                 nextActivity();
             }
-        }, 5000);
+        }, 1000);
 
     }
 
     private void nextActivity() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) {
-            Intent intent = new Intent(this, LoginPage.class);
-            startActivity(intent);
-        }
-        else {
-            Intent intent = new Intent(this, HomePage.class);
-            startActivity(intent);
-        }
+        Intent intent = new Intent(this, LoginPage.class);
+          startActivity(intent);
+//        if (user == null) {
+//            Intent intent = new Intent(this, LoginPage.class);
+//            startActivity(intent);
+//        }
+//        else {
+//            Intent intent = new Intent(this, HomePage.class);
+//            startActivity(intent);
+//        }
         finish();
     }
 }
