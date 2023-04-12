@@ -4,5 +4,5 @@
     <dimen name="name_textSize">20sp</dimen>
     <dimen name="description_textSize">10sp</dimen>
     <dimen name="df_padding">20dp</dimen>
-    <dimen name="df_margin">10dp</dimen>
+    <dimen name="df_margin">8dp</dimen>
 </resources>

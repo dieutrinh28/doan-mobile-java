@@ -21,7 +21,7 @@
             android:textSize="24sp"
             android:textColor="#FA275A"
             android:layout_marginBottom="8dp"
-            android:text="Ratings and Reviews" />
+            android:text="Đánh giá" />
 
         <TextView
             android:id="@+id/tvStoreName"
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="8238 ratings" />
+                android:text="8238 lượt" />
         </LinearLayout>
 
         <LinearLayout

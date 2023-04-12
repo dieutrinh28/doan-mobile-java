@@ -9,17 +9,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/textview_border"
-        android:padding="8dp"
-        android:layout_margin="16dp">
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_marginBottom="10dp">
 
         <ImageView
             android:id="@+id/imageView_cart"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_gravity="center"
             android:layout_margin="8dp"
-            android:src="@drawable/ic_cart"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            android:background="@drawable/rounded_corner"/>/>
 
         <LinearLayout
             android:layout_width="300dp"
@@ -27,7 +30,8 @@
             android:layout_weight="1"
             android:gravity="start"
             android:orientation="vertical"
-            android:paddingLeft="16dp" >
+            android:paddingLeft="10dp"
+            android:layout_gravity="center">
 
             <TextView
                 android:id="@+id/textView_productName"
@@ -36,7 +40,7 @@
                 android:text="Name"
                 android:layout_marginTop="6dp"
                 android:textColor="@android:color/black"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/textView_price"
@@ -44,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:text="Price"
                 android:textColor="@android:color/black"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:layout_marginTop="6dp"
                 android:textStyle="bold" />
 
@@ -52,11 +56,12 @@
 
 
         <LinearLayout
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="end"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
 
             <LinearLayout
                 android:layout_width="100dp"
@@ -65,7 +70,7 @@
                 android:orientation="horizontal"
                 android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="10dp"
                 android:padding="3dp">
 
                 <ImageButton

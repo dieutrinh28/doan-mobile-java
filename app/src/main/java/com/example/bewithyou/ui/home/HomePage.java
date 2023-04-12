@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.RatingBar;
 
 import com.example.bewithyou.Callback;
+import com.example.bewithyou.ExpandableHeightGridView;
 import com.example.bewithyou.R;
 import com.example.bewithyou.SearchPage;
 import com.example.bewithyou.getData;
@@ -29,7 +30,7 @@ import java.util.TimerTask;
 public class HomePage extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private ImageButton imageButtonCart;
 
-    GridView gridViewStore;
+    ExpandableHeightGridView gridViewStore;
     ImageButton btnUser;
 
     private ViewPager viewPager;
@@ -48,13 +49,13 @@ public class HomePage extends AppCompatActivity implements SearchView.OnQueryTex
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        ImageButton backButton = findViewById(R.id.back_button);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+//        ImageButton backButton = findViewById(R.id.back_button);
+//        backButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onBackPressed();
+//            }
+//        });
         searchView = findViewById(R.id.search_view);
         searchView.setOnQueryTextListener(this);
 
@@ -68,8 +69,8 @@ public class HomePage extends AppCompatActivity implements SearchView.OnQueryTex
             }
         });
 
-        gridViewStore = findViewById(R.id.gridViewStore);
-        RatingBar ratingBar = findViewById(R.id.ratingBar);
+        gridViewStore = (ExpandableHeightGridView) findViewById(R.id.gridViewStore);
+        gridViewStore.setExpanded(true);
 
         getData.getStoreData(new Callback<List<Store>>() {
             @Override
@@ -108,7 +109,12 @@ public class HomePage extends AppCompatActivity implements SearchView.OnQueryTex
     @Override
     public boolean onQueryTextChange(String newText) {
         // Perform search as user types
-        viewPager.setVisibility(View.GONE);
+        if(!newText.isEmpty()) {
+            viewPager.setVisibility(View.GONE);
+        } else {
+            viewPager.setVisibility(View.VISIBLE);
+        }
+
         search(newText);
         return false;
     }

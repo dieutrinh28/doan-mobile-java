@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailProductActivity"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -42,7 +44,9 @@
                     android:text="Price"
                     android:textAlignment="textEnd"
                     android:textColor="@color/primary_color"
-                    android:textSize="@dimen/normal_textSize" />
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical"/>
             </LinearLayout>
             <TextView
                 android:id="@+id/tv_product_description"
@@ -51,10 +55,11 @@
                 android:text="Description"
                 android:textColor="@color/gray"
                 android:layout_marginLeft="10dp"
-                android:textSize="@dimen/normal_textSize" />
+                android:textSize="@dimen/normal_textSize"
+                android:layout_marginBottom="10dp"/>
             <View
                 android:layout_width="match_parent"
-                android:layout_height="4dp"
+                android:layout_height="2dp"
                 android:background="@color/gray"
                 android:layout_margin="5dp"/>
             <EditText
@@ -81,13 +86,12 @@
                     android:layout_margin="10dp">
                     <Button
                         android:id="@+id/btn_minus"
-                        android:layout_width="24dp"
+                        android:layout_width="15dp"
                         android:layout_height="24dp"
                         android:layout_margin="10dp"
                         android:background="@drawable/ic_substract"
                         android:contentDescription="minus"
                         >
-
                     </Button>
                     <TextView
                         android:id="@+id/tv_quantity"
@@ -109,15 +113,18 @@
 
                     </Button>
                 </LinearLayout>
+
                 <Button
                     android:id="@+id/btn_addtocart"
                     android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:backgroundTint="@color/primary_color"
+                    android:layout_height="44dp"
                     android:textSize="@dimen/normal_textSize"
                     android:textColor="@color/white"
                     android:layout_marginLeft="5dp"
-                    android:text="Add to cart">
+                    android:text="Add to cart"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:background="@drawable/textview_border">
                 </Button>
             </LinearLayout>
         </LinearLayout>

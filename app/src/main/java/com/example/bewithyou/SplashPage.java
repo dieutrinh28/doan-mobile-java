@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -32,17 +33,18 @@ public class SplashPage extends AppCompatActivity {
     }
 
     private void nextActivity() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        Intent intent = new Intent(this, LoginPage.class);
-          startActivity(intent);
-//        if (user == null) {
-//            Intent intent = new Intent(this, LoginPage.class);
-//            startActivity(intent);
-//        }
-//        else {
-//            Intent intent = new Intent(this, HomePage.class);
-//            startActivity(intent);
-//        }
-        finish();
+        SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+        String username = preferences.getString("username", "default_value");
+
+        if (!username.equals("")) {
+            // Email exists, skip login page and go to home page
+            startActivity(new Intent(SplashPage.this, HomePage.class));
+            finish();
+        } else {
+            // Email does not exist, go to login page
+            startActivity(new Intent(SplashPage.this, LoginPage.class));
+            finish();
+        }
+
     }
 }

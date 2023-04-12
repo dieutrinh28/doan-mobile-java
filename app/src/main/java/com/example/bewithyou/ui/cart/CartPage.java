@@ -62,7 +62,7 @@ public class CartPage extends AppCompatActivity {
                     sum+= Float.parseFloat(cart.getPrice()) * Float.parseFloat(cart.getQuantity());
                     quantity += Integer.parseInt(cart.getQuantity());
                 }
-                totalAmount.setText(String.valueOf(sum));
+                totalAmount.setText(String.valueOf(sum)+"00đ");
                 txtQuantity.setText(String.valueOf(quantity));
             }
 

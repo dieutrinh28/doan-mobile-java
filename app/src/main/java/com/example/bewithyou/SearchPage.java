@@ -10,18 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RatingBar;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.bewithyou.model.Product;
 import com.example.bewithyou.model.User;
 import com.example.bewithyou.ui.auth.LoginPage;
-import com.example.bewithyou.ui.auth.RegisterPage;
-import com.example.bewithyou.ui.home.HomePage;
-
-import java.util.List;
 
 public class SearchPage extends AppCompatActivity {
     private SearchView searchView;
@@ -33,7 +26,7 @@ public class SearchPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_page);
+        setContentView(R.layout.activity_profile_page);
 
         SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
 
@@ -49,13 +42,13 @@ public class SearchPage extends AppCompatActivity {
             }
         });
 
-        ImageButton backButton = findViewById(R.id.back_button);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+//        ImageButton backButton = findViewById(R.id.back_button);
+//        backButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onBackPressed();
+//            }
+//        });
         userName =findViewById(R.id.username_text);
         phoneNum=findViewById(R.id.phone_num_text);
         address =findViewById(R.id.btnDeliveryAddress);

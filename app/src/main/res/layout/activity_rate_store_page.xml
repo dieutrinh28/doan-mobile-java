@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Rate Us"
+                android:text="Đánh giá"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -59,8 +59,8 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:text="Your feedback is crucial to help us improve our product and services."
-                android:textSize="16sp" />
+                android:text="Phản hồi của bạn rất quan trọng để giúp chúng tôi cải thiện sản phẩm và dịch vụ của mình."
+                android:textSize="15sp" />
 
             <me.zhanghai.android.materialratingbar.MaterialRatingBar
                 android:id="@+id/ratingBarRate"
@@ -84,7 +84,7 @@
                 android:layout_margin="20dp"
                 android:maxLines="3"
                 android:minLines="3"
-                android:hint="write review" />
+                android:hint="Viết đánh giá..." />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -98,19 +98,20 @@
                     android:id="@+id/btnLater"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:backgroundTint="@color/material_on_primary_disabled"
-                    android:text="Later"
+                    android:text="Để sau"
                     android:textColor="#FA275A"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    tools:ignore="TouchTargetSizeCheck"
+                    android:backgroundTint="@color/white"/>
 
                 <Button
                     android:id="@+id/btnRate"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:layout_marginLeft="20dp"
-                    android:backgroundTint="#FA275A"
-                    android:text="Rate"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:text="Đánh giá"
+                    android:textColor="#FFF"
+                    tools:ignore="TouchTargetSizeCheck"
+                    android:backgroundTint="#FA275A"/>
             </LinearLayout>
         </LinearLayout>
 

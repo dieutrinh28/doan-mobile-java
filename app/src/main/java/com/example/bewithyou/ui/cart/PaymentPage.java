@@ -11,6 +11,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import com.example.bewithyou.Callback;
+import com.example.bewithyou.ExpandableHeightGridView;
 import com.example.bewithyou.R;
 import com.example.bewithyou.getData;
 import com.example.bewithyou.model.Cart;
@@ -22,7 +23,7 @@ import java.util.List;
 public class PaymentPage extends AppCompatActivity {
 
 
-    GridView gridView;
+    ExpandableHeightGridView gridView;
 
     TextView price, ship, total;
     Button order;
@@ -34,7 +35,8 @@ public class PaymentPage extends AppCompatActivity {
 
         getData.init(getApplicationContext());
 
-        gridView = findViewById(R.id.gvItems);
+        gridView = (ExpandableHeightGridView) findViewById(R.id.gvItems);
+        gridView.setExpanded(true);
         price = findViewById(R.id.tvPrice);
         ship = findViewById(R.id.tvShip);
         total = findViewById(R.id.tvTotal);
@@ -65,8 +67,8 @@ public class PaymentPage extends AppCompatActivity {
                 for (Cart cart  : data) {
                     sum += Float.parseFloat(cart.getPrice()) * Float.parseFloat(cart.getQuantity());
                 }
-                price.setText(String.valueOf(sum));
-                total.setText(String.valueOf(sum));
+                price.setText(String.valueOf(sum)+"00đ");
+                total.setText(String.valueOf(sum)+"00đ");
             }
 
             @Override

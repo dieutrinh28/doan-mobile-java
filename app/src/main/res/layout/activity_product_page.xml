@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_margin="10dp"
-    tools:context=".ui.product.ProductPage">
+    tools:context=".ui.product.ProductPage"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -16,53 +22,64 @@
             android:gravity="center_horizontal|center_vertical">
             <ImageView
                 android:id="@+id/imv_store"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="100dp"
+                android:layout_height="90dp"
                 tools:srcCompat="@tools:sample/avatars"/>
-            <TextView
-                android:id="@+id/tv_store_name"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="T'ny Cake, Panna Cotta, Tàu hủ Singapore"
-                android:textSize="@dimen/name_textSize"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:layout_margin="5dp"
-                />
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_store_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="T'ny Cake, Panna Cotta, Tàu hủ Singapore"
+                    android:textSize="@dimen/name_textSize"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="20dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_store_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="This is store's description"
+                    android:textSize="@dimen/description_textSize"
+                    android:textStyle="italic"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    />
+            </LinearLayout>
         </LinearLayout>
-        <TextView
-            android:id="@+id/tv_store_description"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="This is store's description"
-            android:textSize="@dimen/description_textSize"
-            android:textStyle="italic"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="5dp"
-            />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gray"
-            android:layout_margin="5dp"/>
-        <TextView
-            android:id="@+id/tv_store_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="  This is store's address"
-            android:textColor="@color/black"
-            android:textSize="@dimen/normal_textSize"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:drawableLeft="@drawable/ic_location"
-            />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gray"
-            android:layout_margin="5dp"/>
+            android:layout_marginTop="5dp">
+            <ImageButton
+                android:id="@+id/btnCart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:contentDescription="Cart"
+                android:minHeight="50dp"
+                android:layout_gravity="left"
+                android:src="@drawable/ic_location" />
+            <TextView
+                android:id="@+id/tv_store_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This is store's address"
+                android:textColor="@color/black"
+                android:textSize="@dimen/normal_textSize"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:background="@color/gray"-->
+<!--            android:layout_margin="5dp"/>-->
         <!--<TextView
             android:id="@+id/etReviewStore"
             android:layout_width="match_parent"
@@ -75,33 +92,36 @@
             android:layout_marginRight="20dp"
             />-->
 
-    <Button
-        android:id="@+id/btnReviewStore"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nhận xét và đánh giá"
-        android:drawableLeft="@drawable/ic_rate_star"
-        android:backgroundTint="@color/white" />
-        <View
+        <Button
+            android:id="@+id/btnReviewStore"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gray"
-            android:layout_margin="5dp"/>
+            android:layout_height="wrap_content"
+            android:hint="Nhận xét và đánh giá"
+            android:drawableLeft="@drawable/ic_rate_star"
+            android:drawableRight="@drawable/ic_arrow"
+            android:backgroundTint="@color/white"
+            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Danh sách sản phẩm"
             android:textSize="@dimen/name_textSize"
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="@dimen/df_margin"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/black"
             android:textStyle="bold"/>
-    <GridView
-        android:id="@+id/product_display_gridview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:padding="15px" />
-</LinearLayout>
+
+        <com.example.bewithyou.ExpandableHeightGridView
+            android:id="@+id/product_display_gridview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="20dp"
+            android:gravity="center"
+            android:horizontalSpacing="2dp"
+            android:isScrollContainer="false">
+        </com.example.bewithyou.ExpandableHeightGridView>
+    </LinearLayout>
+</ScrollView>
 
 
