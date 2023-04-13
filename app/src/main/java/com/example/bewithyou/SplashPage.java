@@ -10,9 +10,6 @@ import android.os.Handler;
 
 import com.example.bewithyou.ui.auth.LoginPage;
 import com.example.bewithyou.ui.home.HomePage;
-import com.example.bewithyou.ui.review.ReviewPage;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class SplashPage extends AppCompatActivity {
 

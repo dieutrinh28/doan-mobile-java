@@ -21,8 +21,8 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class StoreAdapter extends BaseAdapter {
-    private List<Store> store_list;
-    private Context context;
+    private final List<Store> store_list;
+    private final Context context;
 
     public StoreAdapter(List<Store> store_list, Context context) {
         this.store_list = store_list;
@@ -62,10 +62,7 @@ public class StoreAdapter extends BaseAdapter {
         } else {
             dataitem = (MyView) convertView.getTag();
         }
-        // new DownloadImage(dataitem.iv_photo).execute(photo_list.get(position).getSource_photo());
-        //  Picasso.get().load(photo_list.get(position).getSource_photo()).resize(300, 400).centerCrop().into(dataitem.iv_photo);
 
-        //  Picasso.get().load((PhotoData.getPhotoById(id).getSource_photo())).resize(400,500).centerCrop().into(iv_detail);
         Picasso.get().load(store_list.get(position).getStoreImg()).resize(300, 400).centerCrop().into(dataitem.iv_photo);
         dataitem.tv_name.setText(store_list.get(position).getStoreName());
         dataitem.tv_description.setText(store_list.get(position).getStoreDescription());
@@ -90,6 +87,7 @@ public class StoreAdapter extends BaseAdapter {
 
         return convertView;
     }
+
     private static class MyView {
         ImageView iv_photo;
         TextView tv_name, tv_description;

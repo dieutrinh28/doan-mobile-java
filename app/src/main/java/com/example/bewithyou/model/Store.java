@@ -7,7 +7,7 @@ public class Store {
     private String storeImg;
     private String storeAddress;
 
-    public Store(){};
+    public Store(){}
 
     public Store(String storeName, String storeDescription, String rating, String storeImg, String storeAddress) {
         this.storeName = storeName;

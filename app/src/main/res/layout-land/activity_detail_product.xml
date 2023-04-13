@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailProductActivity"
+    tools:context=".ui.product.DetailProductActivity"
     android:orientation="horizontal"
     android:gravity="center"
     >
@@ -75,7 +75,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_margin="10dp"
-                    android:background="@drawable/ic_substract"
+                    android:background="@drawable/ic_minus"
                     android:contentDescription="minus"
                     >
 

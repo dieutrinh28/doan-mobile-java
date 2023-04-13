@@ -1,4 +1,4 @@
-package com.example.bewithyou;
+package com.example.bewithyou.ui.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,18 +8,17 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.example.bewithyou.Callback;
+import com.example.bewithyou.R;
+import com.example.bewithyou.getData;
 import com.example.bewithyou.model.User;
 import com.example.bewithyou.ui.auth.LoginPage;
 
-public class SearchPage extends AppCompatActivity {
-    private SearchView searchView;
-    private EditText editText;
-    private TextView userName,phoneNum, address;
+public class ProfilePage extends AppCompatActivity {
+
+    private TextView userName,phoneNum,address, email;
     private Button button;
 
     @SuppressLint("MissingInflatedId")
@@ -38,20 +37,14 @@ public class SearchPage extends AppCompatActivity {
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("username", "");
                 editor.apply();
-                startActivity(new Intent(SearchPage.this , LoginPage.class));
+                startActivity(new Intent(ProfilePage.this , LoginPage.class));
             }
         });
 
-//        ImageButton backButton = findViewById(R.id.back_button);
-//        backButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onBackPressed();
-//            }
-//        });
-        userName =findViewById(R.id.username_text);
-        phoneNum=findViewById(R.id.phone_num_text);
-        address =findViewById(R.id.btnDeliveryAddress);
+        userName = findViewById(R.id.username_text);
+        phoneNum= findViewById(R.id.btnPhone);
+        address = findViewById(R.id.btnDeliveryAddress);
+        email = findViewById(R.id.btnEmail);
 
         String username = preferences.getString("username", "default_value");
 
@@ -59,9 +52,10 @@ public class SearchPage extends AppCompatActivity {
             @Override
             public void onSuccess(User data) {
                 System.out.println("name:"+data.toString());
-               userName.setText(data.getUserName().toString());
-               phoneNum.setText(data.getPhoneNum());
-                address.setText("      "+data.getAddress());
+                userName.setText(data.getUserName());
+                phoneNum.setText(data.getPhoneNum());
+                address.setText(data.getAddress());
+                email.setText(data.getEmail());
             }
 
             @Override

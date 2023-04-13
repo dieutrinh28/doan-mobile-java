@@ -1,8 +1,5 @@
 package com.example.bewithyou.ui.auth;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,9 +10,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.bewithyou.R;
-import com.example.bewithyou.SearchPage;
-import com.example.bewithyou.ui.cart.CartPage;
 import com.example.bewithyou.ui.home.HomePage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -61,22 +59,6 @@ public class LoginPage extends AppCompatActivity {
             }
         });
     }
-
-//    private void loginUser(String email, String password) {
-//        Auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//            @Override
-//            public void onComplete(@NonNull Task<AuthResult> task) {
-//                Toast.makeText(LoginPage.this, "Login Successful", Toast.LENGTH_SHORT).show();
-//                SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
-//                SharedPreferences.Editor editor = preferences.edit();
-//                String em = email.replace("@gmail.com","");
-//                editor.putString("username", em);
-//                editor.apply();
-//                startActivity(new Intent(LoginPage.this , HomePage.class));
-//                finish();
-//            }
-//        });
-//    }
 
     private void loginUser(String email, String password) {
         Auth.signInWithEmailAndPassword(email, password)

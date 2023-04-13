@@ -1,6 +1,5 @@
 package com.example.bewithyou.ui.cart;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,10 +9,13 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.bewithyou.Callback;
 import com.example.bewithyou.R;
 import com.example.bewithyou.getData;
 import com.example.bewithyou.model.Cart;
+import com.example.bewithyou.ui.order.PaymentPage;
 
 import java.util.List;
 
@@ -62,7 +64,7 @@ public class CartPage extends AppCompatActivity {
                     sum+= Float.parseFloat(cart.getPrice()) * Float.parseFloat(cart.getQuantity());
                     quantity += Integer.parseInt(cart.getQuantity());
                 }
-                totalAmount.setText(String.valueOf(sum)+"00đ");
+                totalAmount.setText(sum +"00đ");
                 txtQuantity.setText(String.valueOf(quantity));
             }
 

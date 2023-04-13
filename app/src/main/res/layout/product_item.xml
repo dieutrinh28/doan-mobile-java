@@ -16,7 +16,7 @@
             android:layout_height="100dp"
             android:layout_gravity="center_vertical"
             android:contentDescription="This is product's image"
-            tools:srcCompat="@tools:sample/avatars"/>
+            tools:srcCompat="@tools:sample/avatars" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -11,17 +11,13 @@ import android.widget.TextView;
 
 import com.example.bewithyou.R;
 import com.example.bewithyou.model.Review;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
-
-import me.zhanghai.android.materialratingbar.MaterialRatingBar;
-
 public class ReviewAdapter extends BaseAdapter {
 
-    private List<Review> reviewList;
+    private final List<Review> reviewList;
 
-    private Context context;
+    private final Context context;
 
     public ReviewAdapter(List<Review> reviewList, Context context) {
         this.reviewList = reviewList;
@@ -41,7 +37,6 @@ public class ReviewAdapter extends BaseAdapter {
     @Override
     public long getItemId(int i) {
         return 0;
-        /*return Long.parseLong(reviewList.get(i).getComment());*/
     }
 
     @Override
@@ -62,8 +57,6 @@ public class ReviewAdapter extends BaseAdapter {
             dataItem = (MyView) view.getTag();
         }
 
-        /* lấy avatar user và name user từ id user*/
-        /*Picasso.get().load(reviewList.get(i).)*/
 
         dataItem.nameUser.setText(reviewList.get(i).getUserId());
         dataItem.date.setText(reviewList.get(i).getDate());

@@ -16,13 +16,13 @@
         android:layout_marginBottom="10dp">
 
         <ImageView
-            android:id="@+id/imageView_cart"
+            android:id="@+id/imageOrder"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_gravity="center"
             android:layout_margin="8dp"
             android:scaleType="centerCrop"
-            android:background="@drawable/rounded_corner"/>
+            android:background="@drawable/rounded_corner"/>/>
 
         <LinearLayout
             android:layout_width="300dp"
@@ -34,7 +34,7 @@
             android:layout_gravity="center">
 
             <TextView
-                android:id="@+id/textView_productName"
+                android:id="@+id/tvNameOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name"
@@ -43,7 +43,7 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/textView_price"
+                android:id="@+id/tvPriceOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Price"
@@ -64,7 +64,7 @@
             >
 
             <LinearLayout
-                android:layout_width="100dp"
+                android:layout_width="50dp"
                 android:layout_height="34dp"
                 android:background="@drawable/textview_border"
                 android:orientation="horizontal"
@@ -73,38 +73,21 @@
                 android:layout_marginRight="10dp"
                 android:padding="3dp">
 
-                <ImageButton
-                    android:id="@+id/btnMinus"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/ic_minus"
-                    android:contentDescription="Minus" />
 
                 <TextView
-                    android:id="@+id/textView_quantity"
+                    android:id="@+id/tvQuantityOrder"
                     android:layout_width="35dp"
                     android:layout_height="wrap_content"
-                    android:text="quan"
                     android:layout_gravity="center"
                     android:gravity="center"
+                    android:text="quan"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
-                <ImageButton
-                    android:id="@+id/btnAdd"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/ic_add"
-                    android:contentDescription="Add" />
+
 
             </LinearLayout>
-            <ImageButton
-                android:id="@+id/btnDelete"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:gravity="end"
-                android:background="@drawable/ic_delete"
-                android:contentDescription="Delete" />
+
 
 
         </LinearLayout>

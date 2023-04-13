@@ -8,10 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,11 +25,10 @@ import java.util.List;
 
 public class ProductPage extends AppCompatActivity {
     ExpandableHeightGridView gridView;
-    //GridView gridView;
     Button btnReviewStore;
 
     ImageView imvStore;
-    TextView tvStoreName, tvStoreDescription, tvStoreAddess;
+    TextView tvStoreName, tvStoreDescription, tvStoreAddress;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -48,10 +44,10 @@ public class ProductPage extends AppCompatActivity {
 
         imvStore = findViewById(R.id.imv_store);
         tvStoreDescription = findViewById(R.id.tv_store_description);
-        tvStoreAddess = findViewById(R.id.tv_store_address);
+        tvStoreAddress = findViewById(R.id.tv_store_address);
         tvStoreName = findViewById(R.id.tv_store_name);
 
-        gridView = (ExpandableHeightGridView) findViewById(R.id.product_display_gridview);
+        gridView = findViewById(R.id.product_display_gridview);
         gridView.setExpanded(true);
 
         btnReviewStore = findViewById(R.id.btnReviewStore);
@@ -62,7 +58,7 @@ public class ProductPage extends AppCompatActivity {
                 Picasso.get().load(data.getStoreImg()).into(imvStore);
                 tvStoreDescription.setText(data.getStoreDescription());
                 tvStoreName.setText(data.getStoreName());
-                tvStoreAddess.setText(data.getStoreAddress());
+                tvStoreAddress.setText(data.getStoreAddress());
             }
 
             @Override

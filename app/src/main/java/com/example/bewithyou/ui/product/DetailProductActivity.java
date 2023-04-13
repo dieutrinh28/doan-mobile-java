@@ -1,4 +1,4 @@
-package com.example.bewithyou;
+package com.example.bewithyou.ui.product;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.bewithyou.Callback;
+import com.example.bewithyou.R;
+import com.example.bewithyou.getData;
 import com.example.bewithyou.model.Product;
 import com.example.bewithyou.ui.cart.CartPage;
 import com.squareup.picasso.Picasso;
@@ -42,7 +46,7 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
 
         imvProDuct = findViewById(R.id.imv_product);
 
-        product_name = (String) getIntent().getStringExtra("product_name");
+        product_name = getIntent().getStringExtra("product_name");
         tvProductName.setText(product_name);
 
         SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);

@@ -21,16 +21,16 @@
             android:name=".ui.review.ReviewPage"
             android:exported="false" />
         <activity
-            android:name=".ui.cart.PaymentPage"
+            android:name=".ui.order.PaymentPage"
             android:exported="false" />
         <activity
-            android:name=".DetailProductActivity"
+            android:name=".ui.product.DetailProductActivity"
             android:exported="false" />
         <activity
             android:name=".ui.cart.CartPage"
             android:exported="false" />
         <activity
-            android:name=".SearchPage"
+            android:name=".ui.home.ProfilePage"
             android:exported="false" />
         <activity
             android:name=".ui.home.HomePage"

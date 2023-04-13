@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:isScrollContainer="true"
-    tools:context=".ui.cart.PaymentPage"
+    tools:context=".ui.order.PaymentPage"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp">
 
@@ -33,32 +33,48 @@
                 android:orientation="vertical"
                 android:layout_marginBottom="10dp">
 
+
                 <Button
-                    android:id="@+id/btnDeliveryAddress"
+                    android:id="@+id/btnStoreAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Delivery Address"
-                    android:drawableLeft="@drawable/ic_ship"
+                    android:textSize="13dp"
+                    android:textAllCaps="false"
+                    android:textColor="#404146"
+                    android:textAlignment="textStart"
+                    android:layout_marginTop="10dp"
                     android:drawableRight="@drawable/ic_arrow"
-                    android:backgroundTint="@color/white" />
+                    android:drawableLeft="@drawable/ic_ship"
+                    android:backgroundTint="@color/white"
+                    android:contentDescription="Store Address"/>
 
                 <Button
                     android:id="@+id/btnLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Location"
-                    android:drawableLeft="@drawable/ic_location"
+                    android:textSize="13dp"
+                    android:textAllCaps="false"
+                    android:textColor="#404146"
+                    android:textAlignment="textStart"
+                    android:layout_marginTop="10dp"
                     android:drawableRight="@drawable/ic_arrow"
-                    android:backgroundTint="@color/white" />
+                    android:drawableLeft="@drawable/ic_location"
+                    android:backgroundTint="@color/white"
+                    android:contentDescription="Location"/>
 
                 <Button
-                    android:id="@+id/btnPhoneNumber"
+                    android:id="@+id/btnPersonal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Name - Phone Number"
-                    android:drawableLeft="@drawable/ic_personal"
+                    android:textSize="13dp"
+                    android:textAllCaps="false"
+                    android:textColor="#404146"
+                    android:textAlignment="textStart"
+                    android:layout_marginTop="10dp"
                     android:drawableRight="@drawable/ic_arrow"
-                    android:backgroundTint="@color/white" />
+                    android:drawableLeft="@drawable/ic_phone"
+                    android:backgroundTint="@color/white"
+                    android:contentDescription="Name - Phone"/>
 
             </LinearLayout>
 
