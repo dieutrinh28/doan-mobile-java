@@ -30,7 +30,6 @@ public class DetailProductActivity extends AppCompatActivity implements View.OnC
         btnAddtoCart = findViewById(R.id.btn_addtocart);
         btnPlus = findViewById(R.id.btn_plus);
         btnMinus = findViewById(R.id.btn_minus);
-        edNote = findViewById(R.id.tv_note);
 
         btnMinus.setOnClickListener(this);
         btnPlus.setOnClickListener(this);
