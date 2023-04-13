@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_height="match_parent">
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/df_margin"
         android:orientation="vertical"
+        android:gravity="center"
         android:background="@drawable/rounded_corner"
         >
 
@@ -41,6 +43,8 @@
             android:textColor="#FFF"/>
 
     </LinearLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,7 +55,7 @@
             android:id="@+id/btnDeliveryAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="13dp"
+            android:textSize="13sp"
             android:textAlignment="textStart"
             android:textColor="@color/black"
             android:layout_marginTop="10dp"
@@ -65,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Location"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:drawableLeft="@drawable/ic_location"
             android:drawableRight="@drawable/ic_arrow"
             android:backgroundTint="@color/white" />
@@ -75,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Payment method"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:drawableLeft="@drawable/ic_personal"
             android:drawableRight="@drawable/ic_arrow"
             android:backgroundTint="@color/white" />
@@ -83,7 +87,7 @@
             android:id="@+id/btnCartInprfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:hint="Cart"
             android:drawableLeft="@drawable/ic_cart"
             android:drawableRight="@drawable/ic_arrow"
@@ -91,7 +95,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:text="Đăng xuất"
             android:textSize="15sp"
             android:background="@drawable/custom_button"

@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/textview_border"
         android:layout_marginTop="15dp"
-        android:hint="Nhật khẩu"
+        android:hint="Mật khẩu"
         android:paddingRight="20dp"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
