@@ -79,7 +79,19 @@ public class PaymentPage extends AppCompatActivity {
         order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println("btn order clicked");
+               getData.deleteCart(username, new Callback<Cart>() {
+                   @Override
+                   public void onSuccess(Cart data) {
+                       System.out.println("cart deleted successful");
+                   }
 
+                   @Override
+                   public void onError(String errorMessage) {
+                       System.out.println(errorMessage.toString());
+
+                   }
+               });
                 Intent intent = new Intent(PaymentPage.this, RateStoreDialog.class);
                 startActivity(intent);
             }
