@@ -52,55 +52,57 @@
         android:layout_margin="16dp">
 
         <Button
+            android:id="@+id/btnEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:textAllCaps="false"
+            android:textColor="#404146"
+            android:textAlignment="textStart"
+            android:layout_marginTop="10dp"
+            android:drawableRight="@drawable/ic_arrow"
+            android:drawableLeft="@drawable/ic_email"
+            android:drawablePadding="10dp"
+            android:backgroundTint="@color/white"
+            android:contentDescription="Email"/>
+        <Button
+            android:id="@+id/btnPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:textAllCaps="false"
+            android:textColor="#404146"
+            android:textAlignment="textStart"
+            android:layout_marginTop="10dp"
+            android:drawableRight="@drawable/ic_arrow"
+            android:drawableLeft="@drawable/ic_phone"
+            android:drawablePadding="10dp"
+            android:backgroundTint="@color/white"
+            android:contentDescription="Phone Number"/>
+        <Button
             android:id="@+id/btnDeliveryAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="13sp"
+            android:textSize="13dp"
+            android:textAllCaps="false"
+            android:textColor="#404146"
             android:textAlignment="textStart"
-            android:textColor="@color/black"
             android:layout_marginTop="10dp"
             android:drawableRight="@drawable/ic_arrow"
             android:drawableLeft="@drawable/ic_ship"
+            android:drawablePadding="10dp"
             android:backgroundTint="@color/white"
             android:contentDescription="Delivery Address"/>
-
-        <Button
-            android:id="@+id/btnLocation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Location"
-            android:layout_marginTop="5dp"
-            android:drawableLeft="@drawable/ic_location"
-            android:drawableRight="@drawable/ic_arrow"
-            android:backgroundTint="@color/white" />
-
-        <Button
-            android:id="@+id/btnPhoneNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Payment method"
-            android:layout_marginTop="5dp"
-            android:drawableLeft="@drawable/ic_personal"
-            android:drawableRight="@drawable/ic_arrow"
-            android:backgroundTint="@color/white" />
-        <Button
-            android:id="@+id/btnCartInprfile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:hint="Cart"
-            android:drawableLeft="@drawable/ic_cart"
-            android:drawableRight="@drawable/ic_arrow"
-            android:backgroundTint="@color/white" />
         <Button
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="25dp"
             android:text="Đăng xuất"
             android:textSize="15sp"
             android:background="@drawable/custom_button"
             android:textColor="#FFF"
             android:id="@+id/btnLogOut"/>
+
     </LinearLayout>
 
 
