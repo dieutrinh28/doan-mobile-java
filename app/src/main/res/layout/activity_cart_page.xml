@@ -27,7 +27,7 @@
     <GridView
         android:id="@+id/gridview"
         android:layout_width="match_parent"
-        android:layout_height="480dp"
+        android:layout_height="630dp"
         android:divider="@android:color/darker_gray"
         android:isScrollContainer="false"
         android:dividerHeight="1dp"
