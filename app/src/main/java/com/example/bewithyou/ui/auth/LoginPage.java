@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,7 +48,13 @@ public class LoginPage extends AppCompatActivity {
             public void onClick(View v) {
                 String txt_email = email.getText().toString();
                 String txt_password = password.getText().toString();
-                loginUser(txt_email,txt_password);
+
+                if(txt_email.isEmpty() || txt_password.isEmpty()) {
+                    Toast.makeText(LoginPage.this, "Login failed: " + "Please enter email or password", Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    loginUser(txt_email,txt_password);
+                }
 
 
             }
