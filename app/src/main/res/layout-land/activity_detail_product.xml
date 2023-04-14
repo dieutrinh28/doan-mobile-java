@@ -108,7 +108,7 @@
                 android:textSize="@dimen/normal_textSize"
                 android:textColor="@color/white"
                 android:layout_marginLeft="5dp"
-                android:text="Add to cart">
+                android:text="Thêm vào giỏ">
             </Button>
         </LinearLayout>
     </LinearLayout>
