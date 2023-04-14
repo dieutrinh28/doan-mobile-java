@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:padding="25dp">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,10 +16,10 @@
             android:layout_height="100dp"
             android:layout_gravity="center_vertical"
             android:contentDescription="This is product's image"
-            tools:srcCompat="@tools:sample/avatars"/>
+            tools:srcCompat="@tools:sample/avatars" />
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
             android:orientation="vertical"
             android:layout_marginLeft="15dp">
@@ -38,8 +37,10 @@
                 android:text="100.000đ"
                 android:textSize="15sp"
                 android:textColor="@color/red"
+                android:textStyle="bold"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"/>
             <TextView
                 android:id="@+id/tv_itemdescription"
                 android:text="Sản phẩm này gồm có...."
@@ -53,6 +54,6 @@
     </LinearLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="@color/gray"/>
 </LinearLayout>

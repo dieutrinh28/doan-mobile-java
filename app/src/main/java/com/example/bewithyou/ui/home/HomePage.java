@@ -10,14 +10,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.RatingBar;
 
 import com.example.bewithyou.Callback;
+import com.example.bewithyou.ExpandableHeightGridView;
 import com.example.bewithyou.R;
-import com.example.bewithyou.SearchPage;
 import com.example.bewithyou.getData;
 import com.example.bewithyou.model.Store;
 import com.example.bewithyou.ui.cart.CartPage;
@@ -29,11 +26,11 @@ import java.util.TimerTask;
 public class HomePage extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private ImageButton imageButtonCart;
 
-    GridView gridViewStore;
+    ExpandableHeightGridView gridViewStore;
     ImageButton btnUser;
 
     private ViewPager viewPager;
-    private int[] images = {R.drawable.img1_viewpaper, R.drawable.img2_viewpaper, R.drawable.img3_viewpaper, R.drawable.img4_viewpaper};
+    private final int[] images = {R.drawable.img1_viewpaper, R.drawable.img2_viewpaper, R.drawable.img3_viewpaper, R.drawable.img4_viewpaper};
 
     private int currentPage = 0;
     private SearchView searchView;
@@ -48,13 +45,6 @@ public class HomePage extends AppCompatActivity implements SearchView.OnQueryTex
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        ImageButton backButton = findViewById(R.id.back_button);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
         searchView = findViewById(R.id.search_view);
         searchView.setOnQueryTextListener(this);
 
@@ -69,7 +59,7 @@ public class HomePage extends AppCompatActivity implements SearchView.OnQueryTex
         });
 
         gridViewStore = findViewById(R.id.gridViewStore);
-        RatingBar ratingBar = findViewById(R.id.ratingBar);
+        gridViewStore.setExpanded(true);
 
         getData.getStoreData(new Callback<List<Store>>() {
             @Override
@@ -91,7 +81,7 @@ public class HomePage extends AppCompatActivity implements SearchView.OnQueryTex
         btnUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomePage.this , SearchPage.class));
+                startActivity(new Intent(HomePage.this , ProfilePage.class));
             }
         });
 
@@ -108,7 +98,12 @@ public class HomePage extends AppCompatActivity implements SearchView.OnQueryTex
     @Override
     public boolean onQueryTextChange(String newText) {
         // Perform search as user types
-        viewPager.setVisibility(View.GONE);
+        if(!newText.isEmpty()) {
+            viewPager.setVisibility(View.GONE);
+        } else {
+            viewPager.setVisibility(View.VISIBLE);
+        }
+
         search(newText);
         return false;
     }

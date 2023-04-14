@@ -61,6 +61,23 @@ public class getData {
             }
         });
     }
+    public static void deleteCart(String userName, final Callback<Cart> callback) {
+        DatabaseReference cartRef = FirebaseDatabase.getInstance().getReference().child("cart");
+        cartRef.child(userName).setValue(null).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    // Cart successfully deleted
+                    callback.onSuccess(null);
+                } else {
+                    // Cart deletion failed
+                    callback.onError(task.getException().toString());
+                }
+            }
+        });
+    }
+
+
 
     public static void getSpecificProduct(String storeName, String name, Callback<Product> callback) {
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(storeName);
@@ -209,7 +226,6 @@ public class getData {
         final String TAG = "Data";
         Log.d(TAG, "Getting products from database");
         DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference(storeName);
-        System.out.println(storeName);
         productsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -251,9 +267,9 @@ public class getData {
         });
     }
 
-    public static void addToCart(String productName, String price, String quantity, String imgLink, String productId, String userName, Callback<String> callback) {
+    public static void addToCart(String productName, String price, String quantity, String imgLink,
+                                 String productId, String userName, Callback<String> callback) {
         DatabaseReference cartRef = FirebaseDatabase.getInstance().getReference("cart").child(userName).child(productId);
-
         cartRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -273,7 +289,6 @@ public class getData {
                             .addOnFailureListener(e -> callback.onError(e.getMessage()));
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 callback.onError(error.getMessage());
@@ -286,7 +301,7 @@ public class getData {
         String username = preferences.getString("username", "default_value");
 
         final String TAG = "Data";
-        Log.d(TAG, "Getting products from database");
+        Log.d(TAG, "Getting cart from database");
         DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference("cart").child(username);
         productsRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -411,13 +426,11 @@ public class getData {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 long count = dataSnapshot.getChildrenCount();
                 String reviewId = "review" + (count + 1);
-
                 DatabaseReference newReviewRef = databaseRef.child(reviewId);
                 newReviewRef.child("userId").setValue(userId);
                 newReviewRef.child("rating").setValue(rating);
                 newReviewRef.child("comment").setValue(comment);
                 newReviewRef.child("date").setValue(date);
-
                 Log.d("TAG", "New review saved with id: " + reviewId);
             }
 

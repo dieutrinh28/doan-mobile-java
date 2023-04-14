@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -52,47 +52,50 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="Phản hồi của bạn rất quan trọng để giúp chúng tôi cải thiện sản phẩm và dịch vụ của mình."
-                android:textSize="15sp" />
-
-            <me.zhanghai.android.materialratingbar.MaterialRatingBar
-                android:id="@+id/ratingBarRate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:contentDescription="Rating Stars"
-                android:isIndicator="false"
-                android:maxHeight="50dp"
-                android:minHeight="50dp"
-                android:numStars="5"
-                android:progressTint="#FA275A"
-                android:rating="0"
-                android:stepSize="1" />
-
-            <EditText
-                android:id="@+id/etComment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:maxLines="3"
-                android:minLines="3"
-                android:hint="Viết đánh giá..." />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginBottom="20dp"
-                android:gravity="end"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <EditText
+                    android:id="@+id/etComment"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:maxLines="3"
+                    android:minLines="3"
+                    android:hint="Viết đánh giá..." />
+                <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                    android:id="@+id/ratingBarRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="Rating Stars"
+                    android:isIndicator="false"
+                    android:maxHeight="50dp"
+                    android:minHeight="50dp"
+                    android:numStars="5"
+                    android:progressTint="#FA275A"
+                    android:rating="0"
+                    android:stepSize="1" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
                 android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:text="Phản hồi của bạn rất quan trọng để giúp chúng tôi cải thiện sản phẩm và dịch vụ của mình."
+                    android:textSize="15sp" />
 
                 <Button
                     android:id="@+id/btnLater"
@@ -116,4 +119,4 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-</RelativeLayout>
+</ScrollView>

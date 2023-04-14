@@ -10,7 +10,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.bewithyou.DetailProductActivity;
 import com.example.bewithyou.R;
 import com.example.bewithyou.model.Product;
 import com.squareup.picasso.Picasso;
@@ -18,8 +17,8 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class ProductAdapter extends BaseAdapter {
-    private List<Product> product_list;
-    private Context context;
+    private final List<Product> product_list;
+    private final Context context;
 
     public ProductAdapter(List<Product> product_list, Context context) {
         this.product_list = product_list;
@@ -57,10 +56,7 @@ public class ProductAdapter extends BaseAdapter {
         } else {
             dataitem = (MyView) convertView.getTag();
         }
-        // new DownloadImage(dataitem.iv_photo).execute(photo_list.get(position).getSource_photo());
-        //  Picasso.get().load(photo_list.get(position).getSource_photo()).resize(300, 400).centerCrop().into(dataitem.iv_photo);
 
-        //  Picasso.get().load((PhotoData.getPhotoById(id).getSource_photo())).resize(400,500).centerCrop().into(iv_detail);
         Picasso.get().load(product_list.get(position).getProductImg()).into(dataitem.iv_photo);
         dataitem.tv_name.setText(product_list.get(position).getProductName());
         dataitem.tv_price.setText(product_list.get(position).getPrice());
